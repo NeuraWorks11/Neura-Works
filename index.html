@@ -120,8 +120,9 @@
                 Automate complex workflows and unlock actionable insights with the next generation of AI-driven platforms.
             </p>
             <a href="#workflow" id="hero-cta" class="inline-block bg-neura-accent text-white font-bold py-4 px-10 rounded-full shadow-2xl hover:bg-neura-accent/90 transition duration-300 transform hover:scale-[1.02] cta-pulse">
-                Run Specialized Simulation
-            </a>
+  See How It Works
+</a>
+
             <p class="mt-4 text-sm text-gray-500">No credit card required. Instantly deploy your first workflow.</p>
         </div>
 
@@ -712,7 +713,38 @@
             }
         };
 
-    </script>
+  <script>
+// Smoothly reveal workflow and auto-start simulation when "See How It Works" is clicked
+document.addEventListener("DOMContentLoaded", () => {
+  const heroCta = document.getElementById("hero-cta");
+  const section = document.getElementById("workflow");
+  const container = document.getElementById("workflow-container");
+  const runButton = document.getElementById("run-simulation"); // the simulation trigger button
+
+  if (heroCta && section && container) {
+    heroCta.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      // Reveal workflow section smoothly
+      container.style.transition = "all 0.8s ease-in-out";
+      container.style.maxHeight = "2000px";
+      container.style.opacity = "1";
+      container.classList.remove("overflow-hidden");
+
+      // Scroll into view
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      // Auto-run simulation after short delay
+      setTimeout(() => {
+        if (runButton) {
+          runButton.click();
+        }
+      }, 1000); // delay so animation section opens first
+    });
+  }
+});
+</script>
+  </script>
 
 </body>
 </html>
