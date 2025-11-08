@@ -3,748 +3,642 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neura Works - Innovate. Automate. Elevate.</title>
+    <title>Neura Works innovate.automate.elevate Automation | Smart Dental Clinic CRM</title>
+    <meta name="description" content="Neura Works helps dental clinics automate appointment booking, reminders, and follow-ups using smart WhatsApp + Email automation. Save time and grow your practice.">
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind to use Inter font and custom colors -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        // Custom Neura Works Palette
-                        'neura-dark': '#0f172a',    // Slate-900 for background
-                        'neura-accent': '#3b82f6',  // Blue-500 for primary accent
-                        'neura-secondary': '#10b981', // Emerald-500 for secondary accent
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-blue: #0A3D62; /* Darker Blue */
+            --secondary-teal: #1ABC9C; /* Teal/Aqua */
+            --light-bg: #F8FAFC; /* Slate-50 */
+            --whatsapp-green: #25D366;
+        }
         body {
-            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--primary-blue);
+        }
+        .text-primary { color: var(--primary-blue); }
+        .bg-secondary { background-color: var(--secondary-teal); }
+        .bg-primary { background-color: var(--primary-blue); }
+
+        /* Custom Hover & Animation Effects */
+        .hover-shadow:hover {
+            box-shadow: 0 12px 25px rgba(26, 188, 156, 0.4);
+            transform: translateY(-4px);
+        }
+        .work-step, .feature-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .feature-card:hover {
+             transform: translateY(-8px);
+             box-shadow: 0 20px 40px rgba(10, 61, 98, 0.15);
+        }
+        
+        /* Hero Background Animation - Subtle Digital Mesh */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            opacity: 0.08;
+        }
+        .dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--secondary-teal);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out alternate;
+            box-shadow: 0 0 10px var(--secondary-teal);
         }
 
-        /* Hero styles */
-        .cta-pulse { animation: pulse-once 2s ease-out 1; }
-        @keyframes pulse-once {
-            0% { box-shadow: 0 0 0 0px rgba(59, 130, 246, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-            100% { box-shadow: 0 0 0 0px rgba(59, 130, 246, 0); }
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+            100% { transform: translate(calc(100vw - 100px), 100px) scale(1.1); opacity: 0.4; }
         }
-        .hero-bg-gradient {
-            background-image: radial-gradient(at 0% 100%, #1e293b 0%, transparent 50%), 
-                              radial-gradient(at 100% 0%, #0f172a 0%, transparent 50%);
+        .dot:nth-child(2) { animation-delay: 5s; transform: translate(calc(100vw - 100px), 100px); }
+        .dot:nth-child(3) { animation-delay: 10s; }
+        .dot:nth-child(4) { animation-delay: 15s; transform: translate(calc(100vw - 100px), 100px); }
+
+        /* WhatsApp Mockup Styles */
+        .whatsapp-bubble {
+            max-width: 85%;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 0.875rem;
+            line-height: 1.3;
+            animation: message-fade-in 1s ease-out;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+        .incoming {
+            background-color: #ffffff; /* White bubble */
+            margin-right: auto;
+            border-bottom-left-radius: 2px;
+        }
+        .outgoing {
+            background-color: #DCF8C6; /* Light green bubble */
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+        }
+        @keyframes message-fade-in {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Workflow Card Styles */
-        .flow-card {
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        /* Timeline Styles */
+        .timeline-item {
             position: relative;
         }
-        .flow-card.active {
-            border-color: #3b82f6;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
-            transform: scale(1.05);
-            z-index: 15; /* Bring active card to front */
-        }
-        .flow-details { transition: opacity 0.4s ease, transform 0.4s ease; }
-        .flow-details.hidden-state { opacity: 0; transform: translateY(10px); }
-
-        /* Data Orb */
-        #data-orb {
+        .timeline-item::before {
+            content: '';
             position: absolute;
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 9999px;
-            background-color: #10b981; /* neura-secondary */
-            box-shadow: 0 0 15px #10b981;
-            transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce effect transition */
-            z-index: 20;
+            left: 17px;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--secondary-teal);
+            opacity: 0.3;
+            z-index: 1;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 8px;
+            top: 0;
+            width: 22px;
+            height: 22px;
+            background: var(--secondary-teal);
+            border: 4px solid var(--light-bg);
+            border-radius: 50%;
+            z-index: 2;
+            animation: pulse-dot 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(26, 188, 156, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(26, 188, 156, 0); }
         }
 
-        /* SVG Line Animation */
-        .flow-line {
-            transition: stroke 0.3s ease;
-            stroke: #374151; /* Default gray-700 */
+        /* --- New Dashboard & Graph Animations --- */
+        
+        /* Dashboard Gliding Card Effect (Starts invisible, glides up) */
+        .dashboard-card-entry {
+            opacity: 0;
+            transform: translateY(20px);
         }
-        .flow-line.active {
-            stroke: #3b82f6; /* neura-accent */
-            stroke-width: 4;
-            filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
-            transition: stroke 0.1s ease, filter 0.1s ease, stroke-width 0.5s ease;
+        .dashboard-card-entry.show {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s ease-out 0.5s;
+        }
+        
+        /* Paper Aeroplane/Gliding Graph Animation Keyframes */
+        @keyframes graph-gliding {
+            0% { stroke-dashoffset: 100; opacity: 0; }
+            50% { opacity: 1; }
+            100% { stroke-dashoffset: 0; opacity: 1; }
+        }
+        
+        /* Apply to the SVG Polyline */
+        .animated-polyline {
+            stroke-dasharray: 100; /* Define the length of the line */
+            stroke-dashoffset: 100; /* Start offset at full length (hidden) */
+            animation: graph-gliding 2s ease-out forwards;
+            animation-delay: 1.5s; /* Delay after card is shown */
         }
 
+        /* Video Modal CSS for Responsive Iframe */
+        #video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px; 
+        }
+        
     </style>
 </head>
-<body class="bg-neura-dark text-gray-200 font-sans">
+<body class="antialiased">
 
-    <!-- Header / Full-Height Hero Section -->
-    <header id="hero" class="relative h-screen flex items-center justify-center overflow-hidden hero-bg-gradient">
-        
-        <!-- Navigation Bar -->
-        <nav class="absolute top-0 left-0 w-full p-6 z-20 bg-neura-dark bg-opacity-90 backdrop-blur-sm">
-            <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <!-- Logo and Company Name -->
-                <a href="#hero" class="flex items-center space-x-2 text-white font-extrabold text-2xl tracking-wider">
-                    <!-- User Uploaded Logo -->
-                    <img src="unnamed.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/40x40/3b82f6/ffffff?text=NW'" alt="Neura Works Logo" class="w-10 h-10 rounded-lg object-cover shadow-lg">
-                    <span>Neura <span class="text-neura-accent">Works</span></span>
+    <!-- 8. Video Modal (Lightbox) -->
+    <div id="video-modal" class="fixed inset-0 bg-black bg-opacity-75 z-[9999] hidden flex items-center justify-center p-4" onclick="closeVideoModal(event)">
+        <div class="w-full max-w-4xl bg-white rounded-xl shadow-2xl overflow-hidden relative" onclick="event.stopPropagation()">
+            <!-- Close Button -->
+            <button onclick="closeVideoModal()" class="absolute top-3 right-3 text-white z-50 p-2 rounded-full bg-black/50 hover:bg-black/70 transition">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <!-- Video Container (Aspect Ratio Box) -->
+            <div id="video-container" class="relative" style="padding-bottom: 56.25%; /* 16:9 Aspect Ratio */">
+                <!-- YouTube iframe will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl font-extrabold flex items-center">
+                <span class="text-primary">Neura</span><span class="text-secondary">Works</span>
+                <span class="text-xs ml-2 text-gray-400 font-light hidden sm:block">inovate.automate.elevate</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-primary font-medium">
+                <a href="#features" class="hover:text-secondary transition duration-150">Features</a>
+                <a href="#how-it-works" class="hover:text-secondary transition duration-150">Workflow Detail</a>
+                <a href="#pricing" class="hover:text-secondary transition duration-150">Pricing</a>
+                <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-4 py-2 bg-secondary text-white rounded-full font-bold hover-shadow transition duration-300">
+                    Book a Free Demo
                 </a>
-
-                <!-- Nav Links (Desktop) -->
-                <div class="hidden md:flex space-x-8 text-sm font-medium">
-                    <a href="#features" class="hover:text-neura-accent transition duration-200">Solutions</a>
-                    <a href="#workflow" class="hover:text-neura-accent transition duration-200">Workflow</a>
-                    <a href="#contact" class="hover:text-neura-accent transition duration-200">Pricing</a>
-                </div>
-
-                <!-- CTA Button -->
-                <button class="bg-neura-accent text-white py-2 px-4 rounded-full text-sm font-semibold hover:bg-neura-light transition duration-300 shadow-lg hidden md:block">
-                    Get Started Free
+            </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-primary focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
-        </nav>
-
-        <!-- Hero Content -->
-        <div class="max-w-4xl mx-auto text-center px-4 z-10">
-            <h1 class="text-6xl md:text-8xl font-extrabold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-neura-accent">
-                Innovate. Automate. Elevate.
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto">
-                Automate complex workflows and unlock actionable insights with the next generation of AI-driven platforms.
-            </p>
-            <a href="#workflow" id="hero-cta" class="inline-block bg-neura-accent text-white font-bold py-4 px-10 rounded-full shadow-2xl hover:bg-neura-accent/90 transition duration-300 transform hover:scale-[1.02] cta-pulse">
-  See How It Works
-</a>
-
-            <p class="mt-4 text-sm text-gray-500">No credit card required. Instantly deploy your first workflow.</p>
         </div>
-
-        <!-- Scroll Down Indicator -->
-        <a href="#features" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-            <svg class="w-8 h-8 text-neura-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </a>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg pb-4">
+            <a href="#features" class="block px-8 py-2 text-primary hover:bg-gray-100">Features</a>
+            <a href="#how-it-works" class="block px-8 py-2 text-primary hover:bg-gray-100">Workflow Detail</a>
+            <a href="#pricing" class="block px-8 py-2 text-primary hover:bg-gray-100">Pricing</a>
+            <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block px-8 py-2 text-center mt-2 bg-secondary text-white rounded-full mx-8 font-bold hover-shadow transition duration-300">
+                Book a Free Demo
+            </a>
+        </div>
     </header>
 
-    <!-- Content Sections -->
-    <main class="py-20 md:py-24">
-        
-        <!-- Features/Solutions Section (simplified for brevity) -->
-        <section id="features" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-            <div class="text-center mb-16">
-                <span class="text-neura-accent uppercase text-sm font-bold tracking-widest">Core Capabilities</span>
-                <h2 class="text-4xl font-bold text-white mt-3">Built for Modern Scale</h2>
-                <p class="text-gray-400 mt-4 max-w-3xl mx-auto">Our platform integrates seamlessly with your existing stack, providing real-time data orchestration and intelligent automation across all departments.</p>
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="hero" class="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32 bg-white">
+            <div class="hero-bg">
+                <!-- Floating digital nodes -->
+                <div class="dot" style="top: 10%; left: 10%; animation-duration: 18s;"></div>
+                <div class="dot" style="top: 50%; right: 10%; animation-duration: 22s; animation-delay: 4s;"></div>
+                <div class="dot" style="bottom: 5%; left: 40%; animation-duration: 16s; animation-delay: 8s;"></div>
             </div>
-            <!-- ... Feature Cards remain the same ... -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700 hover:border-neura-accent transition duration-300"><div class="text-neura-accent mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div><h3 class="text-xl font-semibold text-white mb-2">Workflow Automation</h3><p class="text-gray-400 text-sm">Design, deploy, and manage complex, multi-step workflows without writing a single line of code. Connect all your applications.</p></div>
-                <div class="bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700 hover:border-neura-accent transition duration-300"><div class="text-neura-accent mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><h3 class="text-xl font-semibold text-white mb-2">Real-time Data Sync</h3><p class="text-gray-400 text-sm">Ensure data consistency across your entire ecosystem with instant, two-way synchronization and powerful conflict resolution logic.</p></div>
-                <div class="bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700 hover:border-neura-accent transition duration-300"><div class="text-neura-accent mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg></div><h3 class="text-xl font-semibold text-white mb-2">Predictive Analytics</h3><p class="text-gray-400 text-sm">Leverage deep learning models to predict trends, identify anomalies, and receive automated recommendations for optimal outcomes.</p></div>
-            </div>
-        </section>
 
-        <!-- --- SPECIALIZED INTERACTIVE PRODUCT WORKFLOW SECTION --- -->
-        <section id="workflow" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-gray-900 rounded-3xl shadow-2xl border border-gray-800 my-20 relative">
-            <div class="text-center mb-8">
-                <span class="text-neura-secondary uppercase text-sm font-bold tracking-widest">Architectural Overview</span>
-                <h2 class="text-4xl font-bold text-white mt-3">Specialized Data Orchestration</h2>
-                <p class="text-gray-400 mt-4 max-w-3xl mx-auto">Click on any step or use the button below to see how raw data is refined into strategic output.</p>
-            </div>
-            
-            <div class="text-center mb-12">
-                <button id="auto-run-btn" class="bg-neura-secondary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-neura-secondary/90 transition duration-300 flex items-center justify-center mx-auto" disabled>
-                    <svg id="run-icon" class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span id="run-text">Run Simulation (3 seconds per step)</span>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 text-primary">
+                    Automate Your Dental Clinic with <span class="text-secondary">Neura Works</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto mb-10">
+                    Smart automation for booking, reminders, and follow-ups — **cut no-shows by 30%** so you can focus on patient care, not paperwork.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-8 py-4 bg-secondary text-white text-lg font-bold rounded-full hover-shadow transition duration-300 shadow-xl">
+                        Book a Free Demo
+                    </a>
+                    <a href="https://wa.me/919264248108" target="_blank" class="px-8 py-4 border border-primary text-primary text-lg font-bold rounded-full hover:bg-gray-100 transition duration-300">
+                        <i data-lucide="message-square" class="inline-block w-5 h-5 mr-2"></i>
+                        Message Us on WhatsApp
+                    </a>
+                </div>
+                <!-- Updated button to call the new modal function -->
+                <button onclick="playVideo('3XHwmeJ-Ws8')" class="mt-8 text-secondary font-semibold hover:underline transition duration-300 flex items-center justify-center mx-auto">
+                    <i data-lucide="play-circle" class="w-6 h-6 mr-2"></i>
+                    See How It Works (Quick Demo)
                 </button>
             </div>
+        </section>
 
-            <!-- Workflow Container -->
-            <div id="workflow-container" class="relative transition-all duration-700 ease-out max-h-0 overflow-hidden opacity-0 pt-10">
-                
-                <!-- SVG Canvas for Lines -->
-                <svg id="flow-svg" class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <!-- Lines and Arrows will be drawn here by JS -->
-                </svg>
+        <!-- 2. How It Helps (Enhanced Features Section) -->
+        <section id="features" class="py-20 bg-light-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-4 text-primary">Core Automation Power</h2>
+                <p class="text-xl text-center text-gray-500 max-w-3xl mx-auto mb-16">The modular tools that transform chaos into a seamless, profitable clinic operation.</p>
 
-                <!-- Data Orb (Moving Animation) -->
-                <div id="data-orb" class="absolute hidden"></div>
-                
-                <!-- 1. The Workflow Cards (The Steps) -->
-                <div id="flow-cards-container" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     
-                    <!-- Step 1: Event Trigger -->
-                    <div class="flow-card bg-gray-800 p-4 rounded-xl shadow-lg border border-gray-700 flex flex-col items-center text-center transition duration-300" data-step="1">
-                        <div id="icon-1" class="text-neura-secondary mb-2 w-8 h-8 flex items-center justify-center">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <!-- Feature 1: Smart Reminders (Detailed with WhatsApp Mockup) -->
+                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border border-teal-100 lg:col-span-2">
+                        <div class="flex items-start mb-4">
+                            <i data-lucide="bell-ring" class="w-12 h-12 text-secondary mr-4 p-2 bg-secondary/10 rounded-lg"></i>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1 text-primary">No-Show Killer: Smart Reminders</h3>
+                                <p class="text-gray-600">Automated, timely reminders via **WhatsApp** and Email drastically reduce patient forgetfulness and missed appointments.</p>
+                            </div>
                         </div>
-                        <p class="text-sm font-semibold text-white">1. Event Trigger</p>
+
+                        <div class="mt-6 p-4 bg-gray-50 rounded-lg border-l-4 border-secondary/50">
+                            <p class="text-sm font-semibold mb-3 text-primary">Live WhatsApp Preview (Dummy Data):</p>
+                            <div class="w-full bg-gray-200 p-3 rounded-xl space-y-2">
+                                <!-- Outgoing Message 1 (Confirmation) -->
+                                <div class="whatsapp-bubble outgoing">
+                                    Hi [Patient Name], your appointment with Neura Dental is **Confirmed** for Dr. [Doctor Name] on **Fri, 15 Dec at 10:00 AM**.
+                                    <div class="text-xs text-gray-700 mt-1 flex justify-end items-center">
+                                        10:01 AM <i data-lucide="check-check" class="w-3 h-3 ml-1 text-blue-500"></i>
+                                    </div>
+                                </div>
+                                <!-- Outgoing Message 2 (Reminder - Doll up/follow up reminder) -->
+                                <div class="whatsapp-bubble outgoing" style="animation-delay: 0.5s;">
+                                    **24 Hour Reminder (Doll-Up Message):** Just a friendly reminder about your visit tomorrow. Remember to bring your insurance details. Please reply 'Y' to confirm or click here to reschedule: [Link]
+                                    <div class="text-xs text-gray-700 mt-1 flex justify-end items-center">
+                                        Yesterday 10:00 AM <i data-lucide="check-check" class="w-3 h-3 ml-1 text-blue-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Step 2: AI Model Execution -->
-                    <div class="flow-card bg-gray-800 p-4 rounded-xl shadow-lg border border-gray-700 flex flex-col items-center text-center transition duration-300" data-step="2">
-                        <div id="icon-2" class="text-neura-accent mb-2 w-8 h-8 flex items-center justify-center">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1v-3.25m-7.25-.75h10.5M4 11V7a2 2 0 012-2h4a2 2 0 012 2v4M12 11V7a2 2 0 012-2h4a2 2 0 012 2v4M5 15a2 2 0 012-2h10a2 2 0 012 2v2a2 2 0 01-2 2H7a2 2 0 01-2-2v-2z"></path></svg>
+                    <!-- Feature 2: Automated Follow-ups & Reviews -->
+                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border border-gray-100">
+                        <i data-lucide="star" class="w-10 h-10 text-secondary mb-4 p-2 bg-secondary/10 rounded-lg"></i>
+                        <h3 class="text-xl font-bold mb-2 text-primary">Automated Reputation Growth</h3>
+                        <p class="text-gray-600">Automatically sends feedback requests and review links to patients post-treatment, boosting your online star rating and patient retention.</p>
+                        <div class="mt-4 flex space-x-1">
+                            <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
+                            <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
+                            <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
+                            <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
+                            <i data-lucide="star-half" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
                         </div>
-                        <p class="text-sm font-semibold text-white">2. AI Model Execution</p>
                     </div>
 
-                    <!-- Step 3: Hyper-Personalized Delivery -->
-                    <div class="flow-card bg-gray-800 p-4 rounded-xl shadow-lg border border-gray-700 flex flex-col items-center text-center transition duration-300" data-step="3">
-                        <div id="icon-3" class="text-neura-secondary mb-2 w-8 h-8 flex items-center justify-center">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.657-1.343 3-3 3S6 12.657 6 11V7a6 6 0 016-6v3m0 0h-3m3 0h3m4 8v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2m18-7V7a2 2 0 00-2-2h-3m-6 9V9"></path></svg>
-                        </div>
-                        <p class="text-sm font-semibold text-white">3. Personalized Delivery</p>
+                    <!-- Feature 3: Spam & Fake Booking Filter (Spam Checking) -->
+                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border border-gray-100">
+                        <i data-lucide="shield-check" class="w-10 h-10 text-secondary mb-4 p-2 bg-secondary/10 rounded-lg"></i>
+                        <h3 class="text-xl font-bold mb-2 text-primary">Intelligent Spam Defense</h3>
+                        <p class="text-gray-600">A proactive filtering system instantly detects and blocks suspicious or fake bookings, ensuring your time slots are reserved for real patients only. Zero wasted effort.</p>
                     </div>
 
-                    <!-- Step 4: System Calibration & Feedback -->
-                    <div class="flow-card bg-gray-800 p-4 rounded-xl shadow-lg border border-gray-700 flex flex-col items-center text-center transition duration-300" data-step="4">
-                        <div id="icon-4" class="text-neura-accent mb-2 w-8 h-8 flex items-center justify-center">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2h2m0 0a2 2 0 012-2h2a2 2 0 012 2m-4 4h.01M6 16h.01"></path></svg>
-                        </div>
-                        <p class="text-sm font-semibold text-white">4. System Calibration</p>
+                    <!-- Feature 4: Dashboard & Analytics -->
+                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border border-gray-100">
+                        <i data-lucide="layout-dashboard" class="w-10 h-10 text-secondary mb-4 p-2 bg-secondary/10 rounded-lg"></i>
+                        <h3 class="text-xl font-bold mb-2 text-primary">Real-Time Clinic Oversight</h3>
+                        <p class="text-gray-600">Get an instant, holistic view of your practice's performance: appointments, confirmations rates, revenue metrics, and patient activity, all in one simplified dashboard.</p>
+                    </div>
+
+                     <!-- Feature 5: Campaign Sending -->
+                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border border-gray-100">
+                        <i data-lucide="megaphone" class="w-10 h-10 text-secondary mb-4 p-2 bg-secondary/10 rounded-lg"></i>
+                        <h3 class="text-xl font-bold mb-2 text-primary">Targeted Marketing Campaigns</h3>
+                        <p class="text-gray-600">Launch mass offers, holiday greetings, or specific service campaigns directly to segments of your patient list via WhatsApp/Email to fill slow slots quickly.</p>
                     </div>
                 </div>
-                
-                <!-- 2. The Detailed Explanation Panel -->
-                <div id="flow-details" class="flow-details bg-gray-800 p-6 rounded-xl border border-neura-accent transition duration-500 ease-in-out hidden-state mt-8">
-                    <h3 id="details-title" class="text-2xl font-bold mb-3 text-white"></h3>
-                    <p id="details-description" class="text-gray-400 mb-4"></p>
-                    <div id="details-content">
-                        <!-- Dynamic content (AI output/metrics) will be inserted here -->
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- About/Trust Section -->
-        <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="bg-gray-800 p-10 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between border border-gray-700">
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <span class="text-neura-secondary uppercase text-sm font-bold tracking-widest">Trust and Security</span>
-                    <h2 class="text-3xl font-bold text-white mt-3 mb-4">Engineered for Reliability</h2>
-                    <p class="text-gray-400 mb-6">We handle your data with enterprise-grade security, offering 99.99% uptime and compliance with global regulatory standards. Focus on innovation, we'll handle the infrastructure.</p>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-neura-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> SOC 2 Type II Certified</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-neura-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Scalable cloud architecture</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-neura-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 24/7 Dedicated support</li>
-                    </ul>
+
+        <!-- 3. How It Works (Detailed Timeline & Visual Sequence) -->
+        <section id="how-it-works" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-4 text-primary">The Neura Works Workflow: Zero Effort, Maximum Efficiency</h2>
+                <p class="text-xl text-center text-gray-500 max-w-3xl mx-auto mb-16">See how a single booking automatically handles all communications and management for you.</p>
+
+                <div class="max-w-4xl mx-auto">
+                    <!-- Step 1: Patient Initiates Booking -->
+                    <div class="timeline-item pb-16">
+                        <div class="timeline-dot"></div>
+                        <div class="ml-12 p-6 bg-white rounded-xl shadow-lg border-l-4 border-secondary/50 work-step">
+                            <h3 class="text-2xl font-bold text-primary mb-3 flex items-center">
+                                <i data-lucide="user-plus" class="w-6 h-6 mr-3 text-secondary"></i>
+                                Step 1: Patient Books Online (The Start)
+                            </h3>
+                            <p class="text-lg text-gray-600">The patient finds your clinic online and uses your dedicated Neura Works booking link (integrated on your website or social media). They select a time, choose a doctor, and submit their details in less than 60 seconds.</p>
+                            <div class="mt-4 p-3 bg-teal-50 rounded-lg text-sm text-primary font-medium border border-teal-200">
+                                <i data-lucide="mouse-pointer-click" class="w-4 h-4 inline mr-2"></i>
+                                **Benefit:** Ultra-low friction booking experience leads to higher conversion of leads to appointments.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Neura Works Automation Core -->
+                    <div class="timeline-item pb-16">
+                        <div class="timeline-dot" style="top: 15px;"></div>
+                        <div class="ml-12 p-6 bg-white rounded-xl shadow-lg border-l-4 border-secondary/50 work-step">
+                            <h3 class="text-2xl font-bold text-primary mb-3 flex items-center">
+                                <i data-lucide="cpu" class="w-6 h-6 mr-3 text-secondary"></i>
+                                Step 2: Immediate Verification & Confirmation (The Magic)
+                            </h3>
+                            <p class="text-lg text-gray-600 mb-4">The moment the booking hits the system, Neura Works handles two critical tasks automatically:</p>
+                            
+                            <!-- Sub-step 2a: Spam Check Animation -->
+                            <div class="p-4 bg-red-50 rounded-lg mb-4 flex items-center animate-pulse-once border border-red-200">
+                                <i data-lucide="zap" class="w-6 h-6 text-red-600 mr-3 animate-ping-once"></i>
+                                <div>
+                                    <p class="font-semibold text-primary">Spam & Validity Check:</p>
+                                    <p class="text-sm text-gray-700">The system runs the patient details against our database to flag invalid numbers, bots, or known spam patterns. Only verified appointments proceed.</p>
+                                </div>
+                            </div>
+
+                            <!-- Sub-step 2b: Confirmation Message -->
+                            <div class="p-4 bg-green-50 rounded-lg flex items-center animate-pulse-once border border-green-200">
+                                <i data-lucide="send" class="w-6 h-6 text-green-600 mr-3 animate-bounce-once"></i>
+                                <div>
+                                    <p class="font-semibold text-primary">Instant Confirmation:</p>
+                                    <p class="text-sm text-gray-700">A personalized, branded confirmation message (WhatsApp/Email) is sent immediately, assuring the patient and formally securing the slot.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Live Dashboard & Staff Notification -->
+                    <div class="timeline-item pb-16">
+                        <div class="timeline-dot" style="top: 15px;"></div>
+                        <div class="ml-12 p-6 bg-white rounded-xl shadow-lg border-l-4 border-secondary/50 work-step">
+                            <h3 class="text-2xl font-bold text-primary mb-3 flex items-center">
+                                <i data-lucide="eye" class="w-6 h-6 mr-3 text-secondary"></i>
+                                Step 3: Staff Visibility and Live Updates (The Outcome)
+                            </h3>
+                            <p class="text-lg text-gray-600 mb-4">The new, verified appointment instantly populates the **Neura Works Dashboard**. Your reception staff sees the update in real-time. The system then automatically queues follow-ups, reminders (1 day before), and post-visit review requests.</p>
+
+                            <div class="mt-4 p-3 bg-blue-50 rounded-lg text-sm text-primary font-medium border border-blue-200">
+                                <i data-lucide="loader-2" class="w-4 h-4 inline mr-2 animate-spin"></i>
+                                **Staff Focus:** Your team moves from repetitive tasks (calling, typing) to high-value tasks (patient reception, billing).
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:w-1/3">
-                    <div class="bg-neura-accent/10 p-8 rounded-full flex items-center justify-center mx-auto w-40 h-40">
-                         <svg class="w-24 h-24 text-neura-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11c0 3.866-3 7-3 7h6c0 0-3-3.134-3-7zM12 11V4M9 6h6"></path><circle cx="12" cy="12" r="10" stroke-width="1.5"></circle></svg>
+
+                <div class="text-center mt-12">
+                    <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-10 py-4 bg-primary text-white text-xl font-bold rounded-full hover-shadow transition duration-300 shadow-xl border-4 border-transparent hover:border-secondary">
+                        See the Dashboard in Action - Book Demo
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Dashboard Preview Section -->
+        <section id="dashboard" class="py-20 bg-primary/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold mb-4 text-primary">Your Centralized Command Center</h2>
+                <p class="text-lg text-gray-500 mb-12">Monitor your entire clinic workflow from one dashboard.</p>
+
+                <!-- Mockup Dashboard Card with gliding entry effect -->
+                <div id="dashboard-card" class="bg-white p-6 md:p-10 rounded-2xl shadow-2xl border border-gray-100 max-w-4xl mx-auto dashboard-card-entry">
+                    <!-- Header -->
+                    <div class="flex justify-between items-center mb-6 border-b pb-4">
+                        <h3 class="text-2xl font-semibold text-primary">Neura Works Dashboard</h3>
+                        <span class="text-sm font-medium text-gray-500 flex items-center">
+                            <i data-lucide="power" class="w-4 h-4 mr-1 text-secondary"></i>
+                            Live Status
+                        </span>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="p-4 bg-blue-50 rounded-xl text-left shadow-sm">
+                            <p class="text-sm text-gray-500">Today's Appointments</p>
+                            <div class="flex items-center mt-1">
+                                <span class="text-3xl font-bold text-primary">12</span>
+                                <i data-lucide="check-circle" class="ml-auto w-6 h-6 text-green-500"></i>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-teal-50 rounded-xl text-left shadow-sm">
+                            <p class="text-sm text-gray-500">Upcoming (7 days)</p>
+                            <span class="text-3xl font-bold text-primary">45</span>
+                            <i data-lucide="calendar-check" class="ml-auto w-6 h-6 text-teal-500"></i>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl text-left shadow-sm">
+                            <p class="text-sm text-gray-500">Total Patients</p>
+                            <span class="text-3xl font-bold text-primary">1,289</span>
+                            <i data-lucide="users" class="ml-auto w-6 h-6 text-gray-500"></i>
+                        </div>
+                    </div>
+
+                    <!-- Graph/Chart Mockup and Confirmation Icon -->
+                    <div class="flex flex-col lg:flex-row gap-6">
+                        <div class="lg:w-3/4 h-64 bg-gray-50 rounded-xl p-4 border border-gray-200">
+                            <p class="text-xs text-gray-500 mb-2">Monthly Booking Trend (Gliding Animation)</p>
+                            <!-- Simple line graph simulation with SVG -->
+                            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <!-- The polyline now has the animated-polyline class for the gliding effect -->
+                                <polyline class="animated-polyline" fill="none" stroke="var(--secondary-teal)" stroke-width="2" points="0,90 20,70 40,50 60,30 80,40 100,20" />
+                                <circle cx="100" cy="20" r="3" fill="var(--secondary-teal)" />
+                            </svg>
+                        </div>
+                        <div class="lg:w-1/4 flex flex-col items-center justify-center bg-green-50 rounded-xl p-4 shadow-inner">
+                            <i data-lucide="whatsapp" class="w-12 h-12 text-green-600 mb-2"></i>
+                            <p class="text-lg font-semibold text-green-700">98% Auto-Confirmed</p>
+                            <p class="text-sm text-gray-600 text-center">via Smart WhatsApp</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact/Footer CTA -->
-        <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 text-center">
-            <h2 class="text-4xl font-bold text-white">Ready to Transform Your Operations?</h2>
-            <p class="text-gray-400 mt-4 mb-8">Join the thousands of innovators already accelerating their potential with Neura Works.</p>
-            <button class="bg-neura-secondary text-white font-bold py-3 px-8 rounded-full text-lg shadow-xl hover:bg-neura-secondary/90 transition duration-300 transform hover:scale-[1.05]">
-                Book a Personalized Demo
-            </button>
+        <!-- 5. Testimonials -->
+        <section id="testimonials" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12 text-primary">Trusted by Dental Professionals</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-secondary/70 feature-card">
+                        <i data-lucide="quote" class="w-8 h-8 text-secondary mb-4"></i>
+                        <p class="text-gray-700 italic mb-4">“Neura Works is a game changer. It reduced our no-shows by 30% almost instantly! Patients truly appreciate the automated reminders.”</p>
+                        <p class="font-semibold text-primary">— Dr. Priya Sharma, Clinic Owner</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-secondary/70 feature-card">
+                        <i data-lucide="quote" class="w-8 h-8 text-secondary mb-4"></i>
+                        <p class="text-gray-700 italic mb-4">“Super easy to use. The simple dashboard meant zero training time for our staff. It literally saves us hours every single week.”</p>
+                        <p class="font-semibold text-primary">— Sandeep Singh, Practice Manager</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-secondary/70 feature-card">
+                        <i data-lucide="quote" class="w-8 h-8 text-secondary mb-4"></i>
+                        <p class="text-gray-700 italic mb-4">“The automated follow-ups have been incredible for retention. It makes sure no patient falls through the cracks and keeps our books full.”</p>
+                        <p class="font-semibold text-primary">— Dr.</p>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <!-- 6. Pricing Plans -->
+        <section id="pricing" class="py-20 bg-primary/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4 text-primary">Simple, Predictable Pricing</h2>
+                <p class="text-lg text-center text-gray-500 mb-16">No hidden fees. Scale your automation as your clinic grows.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Starter Plan -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover-shadow transition duration-300 feature-card">
+                        <h3 class="text-2xl font-bold text-primary mb-2">Starter</h3>
+                        <p class="text-gray-600 mb-4">For small clinics establishing their digital presence.</p>
+                        <p class="text-5xl font-extrabold text-primary mb-6">₹1,499<span class="text-xl font-medium text-gray-500">/month</span></p>
+                        <ul class="space-y-3 text-gray-700 mb-8">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Online Booking Page</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Basic Email Reminders</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Single User Access</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Spam Filter</li>
+                        </ul>
+                        <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block w-full text-center py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 transition duration-300">Start Automating</a>
+                    </div>
+
+                    <!-- Growth Plan (Recommended) -->
+                    <div class="bg-primary text-white p-8 rounded-2xl shadow-2xl border-4 border-secondary scale-105 feature-card">
+                        <div class="text-sm font-bold bg-secondary rounded-full inline-block px-4 py-1 mb-3 text-primary">RECOMMENDED</div>
+                        <h3 class="text-2xl font-bold mb-2">Growth</h3>
+                        <p class="mb-4 text-primary/30">For busy clinics focused on high-volume patient throughput.</p>
+                        <p class="text-5xl font-extrabold mb-6">₹4,999<span class="text-xl font-medium text-primary/30">/month</span></p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Everything in Starter</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i><span class="font-bold">Smart WhatsApp Reminders</span></li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Automated Follow-ups & Reviews</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Real-Time Dashboard Access</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Up to 5 Staff Users</li>
+                        </ul>
+                        <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block w-full text-center py-3 bg-secondary text-primary font-bold rounded-full hover-shadow transition duration-300">Book Demo for Growth</a>
+                    </div>
+
+                    <!-- Pro Plan -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover-shadow transition duration-300 feature-card">
+                        <h3 class="text-2xl font-bold text-primary mb-2">Pro</h3>
+                        <p class="text-gray-600 mb-4">For multi-doctor setups and clinics with multiple locations.</p>
+                        <p class="text-5xl font-extrabold text-primary mb-6">₹9,999<span class="text-xl font-medium text-gray-500">/month</span></p>
+                        <ul class="space-y-3 text-gray-700 mb-8">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Everything in Growth</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Multi-Doctor/Location Support</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Targeted Mass Offer Campaigns</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Priority 24/7 Support</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Custom Integration (API)</li>
+                        </ul>
+                        <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block w-full text-center py-3 border-2 border-primary text-primary font-semibold rounded-full hover:bg-gray-100 transition duration-300">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Call to Action / Footer -->
+        <footer class="bg-primary text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">Automate. Relax. Grow.</h2>
+                <p class="text-lg mb-8 text-primary/30 max-w-2xl mx-auto">Stop managing your software, start managing your patients. Let Neura Works handle the rest.</p>
+
+                <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="inline-block px-12 py-4 bg-secondary text-primary text-xl font-bold rounded-full hover-shadow transition duration-300 shadow-xl">
+                    Book a Demo Now
+                </a>
+
+                <div class="mt-12 pt-8 border-t border-primary/50 text-gray-400 text-sm">
+                    <p class="mb-4">&copy; 2025 Neura Works. All rights reserved. | <span class="font-medium">inovate.automate.elevate</span></p>
+                    <div class="flex justify-center space-x-6">
+                        <a href="https://wa.me/919264248108" target="_blank" class="hover:text-secondary transition duration-300 flex items-center">
+                            <i data-lucide="message-square" class="w-4 h-4 mr-1"></i> +91-9264248108 (WhatsApp)
+                        </a>
+                        <a href="mailto:neuraworks11@gmail.com" class="hover:text-secondary transition duration-300 flex items-center">
+                            <i data-lucide="mail" class="w-4 h-4 mr-1"></i> neuraworks11@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 border-t border-gray-800 mt-10">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 Neura Works, Inc. All rights reserved. | <a href="#" class="hover:text-neura-accent">Privacy Policy</a> | <a href="#" class="hover:text-neura-accent">Terms of Service</a></p>
-        </div>
-    </footer>
-
-    <!-- JavaScript for Interactive Workflow and API Calls -->
     <script>
-        const API_KEY = ""; // Placeholder, will be provided by Canvas runtime
-        const GENERATE_CONTENT_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${API_KEY}`;
         
-        // --- DATA STRUCTURE FOR WORKFLOW STEPS (Specialized) ---
-        const workflowSteps = [
-            {
-                step: 1,
-                title: "Event Trigger: Microservice Ingestion",
-                description: "Real-time data stream (API call, database commit, or webhook) triggers the workflow. Data is instantly serialized and queued for processing."
-            },
-            {
-                step: 2,
-                title: "AI Model Execution: Predictive Scoring",
-                description: "The incoming data payload is analyzed by a custom Large Language Model (LLM) to perform sentiment analysis, intent classification, or lead scoring.",
-            },
-            {
-                step: 3,
-                title: "Hyper-Personalized Delivery: Multi-Channel Output",
-                description: "Based on the AI output (e.g., a high lead score), the platform dynamically composes and sends a hyper-personalized message via the optimal channel (Email, SMS, CRM update).",
-            },
-            {
-                step: 4,
-                title: "System Calibration: Feedback Loop",
-                description: "Engagement metrics (open rates, conversion success) are immediately captured and fed back into the AI model, continuously improving future predictions.",
-            }
-        ];
+        // --- Video Modal Logic ---
+        function playVideo(videoId) {
+            const modal = document.getElementById('video-modal');
+            const videoContainer = document.getElementById('video-container');
 
-        // --- DOM Elements & State ---
-        const workflowSection = document.getElementById('workflow');
-        const workflowContainer = document.getElementById('workflow-container');
-        const flowDetails = document.getElementById('flow-details');
-        const detailsTitle = document.getElementById('details-title');
-        const detailsDescription = document.getElementById('details-description');
-        const detailsContent = document.getElementById('details-content');
-        const flowCards = document.querySelectorAll('.flow-card');
-        const heroCta = document.getElementById('hero-cta');
-        const autoRunBtn = document.getElementById('auto-run-btn');
-        const dataOrb = document.getElementById('data-orb');
-        const flowSVG = document.getElementById('flow-svg');
-        const icons = {}; 
-        
-        let activeStep = 0;
-        let isOrbSetup = false;
-        let autoRunInterval = null;
-        let isRunning = false;
-        
-        // --- API FUNCTIONS ---
-        // Function to generate specialized AI output (used for Step 3 demonstration)
-        async function generatePersonalizedMessage(resultsDiv, button) {
-            resultsDiv.innerHTML = '<p class="text-neura-accent">Executing AI Model... (Generating personalized message)</p>';
-            button.disabled = true;
+            // Construct the secure, autoplay embed URL
+            const embedUrl = `https://www.youtube.com/embed/${https://youtu.be/3XHwmeJ-Ws8?si=ezmXyJZ0JqevtkGH}?autoplay=1&rel=0`;
 
-            const systemPrompt = "Act as a specialized AI copywriting model focusing on personalized B2B outreach. Generate a concise, 2-sentence cold email subject line and opening line designed for a prospect identified as 'High Intent'. The tone must be professional and urgent. Format the output with the subject line first, followed by the opening line on a new line.";
-            const userQuery = "Generate a subject line and personalized opening for a high-intent B2B prospect in the SaaS sector. Use the current date to suggest timeliness.";
+            // Create the iframe element
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('src', embedUrl);
+            iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allowfullscreen', '');
             
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                tools: [{ "google_search": {} }], 
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-            };
-
-            const apiUrl = GENERATE_CONTENT_URL;
-            const maxRetries = 3;
-            let response = null;
-
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (response.status === 429 && i < maxRetries - 1) {
-                        const delay = Math.pow(2, i) * 1000;
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                        continue;
-                    }
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    break;
-                } catch (error) {
-                    console.error('Fetch error:', error);
-                    resultsDiv.innerHTML = `<p class="text-red-500">Error connecting to AI service: ${error.message}</p>`;
-                    button.disabled = false;
-                    return;
-                }
-            }
-
-            if (response && response.ok) {
-                const result = await response.json();
-                const candidate = result.candidates?.[0];
-
-                let generatedText = "Could not generate a valid response.";
-                let parts = ["Urgent: High-Intent Activity Detected", "We noticed your recent engagement with our core feature set. Can we validate your immediate pain points today?"];
-
-                if (candidate && candidate.content?.parts?.[0]?.text) {
-                    generatedText = candidate.content.parts[0].text.trim();
-                    parts = generatedText.split('\n').map(p => p.trim()).filter(p => p.length > 0);
-                }
-
-                resultsDiv.innerHTML = `
-                    <div class="space-y-3">
-                        <p class="text-sm text-gray-400 font-semibold uppercase">Output Model: LLM-3</p>
-                        <p class="text-lg font-bold text-neura-secondary">Subject: ${parts[0]}</p>
-                        <p class="text-white">${parts[1] || ""}</p>
-                        <p class="text-xs text-gray-500 mt-2">Delivery success: Email API called. Prospect engagement pending feedback loop (Step 4).</p>
-                    </div>
-                `;
-            } else {
-                resultsDiv.innerHTML = '<p class="text-red-500">Failed to generate personalized message after retries.</p>';
-            }
-            button.disabled = false;
-        }
-
-        // --- UI RENDERING FUNCTIONS ---
-        
-        function getRelativeCoordinates(element) {
-            const containerRect = workflowContainer.getBoundingClientRect();
-            const elementRect = element.getBoundingClientRect();
-            return {
-                x: elementRect.left + elementRect.width / 2 - containerRect.left,
-                y: elementRect.top + elementRect.height / 2 - containerRect.top
-            };
-        }
-
-        // Draws the lines between the icons using SVG
-        function drawLines() {
-            flowSVG.innerHTML = '';
-            const containerRect = workflowContainer.getBoundingClientRect();
-            flowSVG.setAttribute('width', containerRect.width);
-            flowSVG.setAttribute('height', containerRect.height);
-            flowSVG.setAttribute('viewBox', `0 0 ${containerRect.width} ${containerRect.height}`);
-
-            const cardPositions = Array.from(flowCards).map(card => getRelativeCoordinates(document.getElementById(`icon-${card.getAttribute('data-step')}`)));
+            // Load it into the container
+            videoContainer.innerHTML = ''; // Clear previous content
+            videoContainer.appendChild(iframe);
             
-            // Define the Arrowhead Marker
-            flowSVG.innerHTML = `
-                <defs>
-                    <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto">
-                        <polygon points="0 0, 6 2, 0 4" fill="#374151" class="arrowhead-shape"/>
-                    </marker>
-                    <marker id="arrowhead-active" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto">
-                        <polygon points="0 0, 6 2, 0 4" fill="#3b82f6" class="arrowhead-shape"/>
-                    </marker>
-                </defs>
-            `;
+            // Show the modal
+            modal.classList.remove('hidden');
+        }
 
-            for (let i = 0; i < cardPositions.length - 1; i++) {
-                const start = cardPositions[i];
-                const end = cardPositions[i + 1];
-                const lineId = `flow-line-${i + 1}-${i + 2}`;
-
-                // Calculate control points for a slight curve (optional, keeping it straight for now)
-                
-                // Adjust points to make the line start and end near the icon edges, not center
-                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                line.setAttribute('x1', start.x + 20); // Move right from center
-                line.setAttribute('y1', start.y);
-                line.setAttribute('x2', end.x - 20); // Move left from center
-                line.setAttribute('y2', end.y);
-                line.setAttribute('class', 'flow-line');
-                line.setAttribute('id', lineId);
-                line.setAttribute('stroke-width', '2');
-                line.setAttribute('marker-end', 'url(#arrowhead)');
-                flowSVG.appendChild(line);
+        function closeVideoModal(event) {
+            const modal = document.getElementById('video-modal');
+            // Check if the click occurred on the background (event.target === modal) 
+            // or if the function was called directly from the close button
+            if (!event || event.target === modal) {
+                const videoContainer = document.getElementById('video-container');
+                // Stop video playback by removing the iframe
+                videoContainer.innerHTML = '';
+                modal.classList.add('hidden');
             }
         }
-        
-        // Renders the details content for the active step
-        function renderStepDetails(stepData) {
-            detailsTitle.textContent = stepData.title;
-            detailsDescription.textContent = stepData.description;
-            detailsContent.innerHTML = ''; 
 
-            if (stepData.step === 2) {
-                // RENDER: AI Model Output
-                detailsContent.innerHTML = `
-                    <div class="p-4 bg-gray-900 rounded-lg border border-neura-accent/50 mt-4">
-                        <p class="text-sm font-semibold text-neura-accent mb-3 flex items-center">
-                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                            Predicted Output
-                        </p>
-                        <div class="grid grid-cols-2 gap-4 text-center">
-                            <div class="p-3 bg-gray-700 rounded-lg">
-                                <p class="text-sm text-gray-400">Intent Score</p>
-                                <p class="text-2xl font-bold text-neura-secondary">92%</p>
-                            </div>
-                            <div class="p-3 bg-gray-700 rounded-lg">
-                                <p class="text-sm text-gray-400">Classification</p>
-                                <p class="text-xl font-bold text-white">High Priority</p>
-                            </div>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-3">Prediction latency: <span class="text-neura-secondary">50ms</span></p>
-                    </div>
-                `;
-            } else if (stepData.step === 3) {
-                // RENDER: Personalized Delivery / AI Generation Demo
-                detailsContent.innerHTML = `
-                    <div class="p-4 border border-neura-secondary/50 rounded-lg mt-4">
-                        <p class="text-sm font-semibold text-neura-secondary mb-3 flex items-center">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                            LLM-Powered Content Generation
-                        </p>
-                        <button id="draft-button" class="bg-neura-secondary text-white py-2 px-4 rounded-full font-medium text-sm hover:bg-neura-secondary/90 transition duration-300 transform hover:scale-[1.02]">
-                            Generate Personalized Email
-                        </button>
-                        <div id="draft-results" class="mt-4 text-white p-3 bg-gray-900 rounded-lg border border-gray-700">
-                            <p class="text-gray-500 text-sm">Click the button above to simulate generating a dynamic email based on AI scoring.</p>
-                        </div>
-                    </div>
-                `;
-                document.getElementById('draft-button').addEventListener('click', function() {
-                    generatePersonalizedMessage(document.getElementById('draft-results'), this);
+        // --- Initialization and Animations ---
+        window.onload = function () {
+            // Initialize Lucide icons
+            lucide.createIcons();
+
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
                 });
 
-            } else if (stepData.step === 4) {
-                // RENDER: System Calibration
-                detailsContent.innerHTML = `
-                    <div class="grid grid-cols-2 gap-4 mt-4">
-                        <div class="p-4 bg-gray-700 rounded-xl">
-                            <p class="text-sm text-gray-400">Model Precision</p>
-                            <p class="text-2xl font-bold text-white">96.7%</p>
-                        </div>
-                        <div class="p-4 bg-gray-700 rounded-xl">
-                            <p class="text-sm text-gray-400">Success Rate Change</p>
-                            <p class="text-2xl font-bold text-neura-secondary flex items-center justify-center">
-                                +1.2%
-                                <svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
-                            </p>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-400 mt-4">The core model has been updated and re-deployed based on the latest interaction results to ensure continuous optimization.</p>
-                `;
-            }
-            // Show the details panel with transition
-            setTimeout(() => {
-                flowDetails.classList.remove('hidden-state');
-            }, 10);
-        }
-
-        // --- ORB & LINE ANIMATION LOGIC ---
-
-        function updateIconPositions() {
-            // Must be called inside the workflow-container context to get relative coords
-            flowCards.forEach(card => {
-                const step = card.getAttribute('data-step');
-                const iconElement = document.getElementById(`icon-${step}`);
-                if (iconElement) {
-                    const rect = iconElement.getBoundingClientRect();
-                    const containerRect = workflowContainer.getBoundingClientRect();
-                    // Store the center coordinates relative to the workflow container
-                    icons[step] = {
-                        x: rect.left + rect.width / 2 - containerRect.left,
-                        y: rect.top + rect.height / 2 - containerRect.top
-                    };
-                }
-            });
-            drawLines(); // Redraw lines after positions are updated
-            isOrbSetup = true;
-        }
-        
-        function moveOrb(targetStep) {
-            if (!isOrbSetup) return;
-            const target = icons[targetStep];
-            if (!target) return;
-
-            // Orb position relative to the workflow container
-            const targetX = target.x;
-            const targetY = target.y; 
-
-            // Apply transform relative to the workflow container's top-left corner
-            dataOrb.style.transform = `translate(${targetX - 12}px, ${targetY - 12}px)`;
-        }
-
-        function activateLine(startStep, endStep) {
-            // Deactivate all lines first
-            document.querySelectorAll('.flow-line').forEach(line => {
-                line.classList.remove('active');
-                line.setAttribute('marker-end', 'url(#arrowhead)');
-            });
-
-            if (startStep > 0 && endStep <= workflowSteps.length) {
-                const lineId = `flow-line-${startStep}-${endStep}`;
-                const line = document.getElementById(lineId);
-                if (line) {
-                    line.classList.add('active');
-                    line.setAttribute('marker-end', 'url(#arrowhead-active)');
-                }
-            }
-        }
-
-        // --- MAIN WORKFLOW HANDLER ---
-
-        function setActiveStep(step, immediate = false) {
-            if (step < 1 || step > workflowSteps.length) {
-                clearInterval(autoRunInterval);
-                isRunning = false;
-                autoRunBtn.disabled = false;
-                document.getElementById('run-icon').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
-                document.getElementById('run-text').textContent = 'Run Simulation (3 seconds per step)';
-                // Reset to step 1 appearance without moving orb
-                // setActiveStep(1, true); 
-                return;
+                // Close menu on link click
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
             }
             
-            // If running automatically, steps transition every 3000ms
-            const transitionDuration = isRunning ? 1000 : 400; 
-
-            activeStep = step;
-
-            // 1. Update card appearance
-            flowCards.forEach(card => {
-                card.classList.remove('active', 'border-neura-accent');
-                card.classList.add('border-gray-700');
-                if (parseInt(card.getAttribute('data-step')) === step) {
-                    card.classList.add('active');
-                }
-            });
-
-            // 2. Animate line leading *to* this step
-            activateLine(step - 1, step); // Activates line 1->2 for step 2, 2->3 for step 3, etc.
-            if (step === 1) activateLine(0, 0); // No line active for step 1
-
-            // 3. Move the data orb
-            dataOrb.style.transitionDuration = `${transitionDuration}ms`;
-            moveOrb(step);
-
-            // 4. Render new content 
-            flowDetails.classList.add('hidden-state');
-            const stepData = workflowSteps.find(s => s.step === step);
-            if (stepData) {
-                setTimeout(() => {
-                    renderStepDetails(stepData);
-                }, transitionDuration * 0.5); 
-            }
-        }
-        
-        // --- AUTO RUN FUNCTIONS ---
-        function startAutoRun() {
-            if (isRunning) return;
-            isRunning = true;
-            autoRunBtn.disabled = true;
-            document.getElementById('run-icon').innerHTML = '<path fill-rule="evenodd" clip-rule="evenodd" d="M18 10H6v4h12v-4z"></path>';
-            document.getElementById('run-text').textContent = 'Running... Click Step to Pause';
-            
-            let currentStep = 1;
-            setActiveStep(currentStep);
-
-            autoRunInterval = setInterval(() => {
-                currentStep++;
-                if (currentStep > workflowSteps.length) {
-                    currentStep = 1; // Loop back to the start
-                }
-                setActiveStep(currentStep);
-            }, 3000); 
-        }
-
-        function stopAutoRun() {
-            clearInterval(autoRunInterval);
-            isRunning = false;
-            autoRunBtn.disabled = false;
-            document.getElementById('run-icon').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
-            document.getElementById('run-text').textContent = 'Run Simulation (3 seconds per step)';
-        }
-
-        // --- INITIALIZATION AND LISTENERS ---
-
-        function startWorkflowAnimation() {
-            // Expand the container
-            workflowContainer.classList.remove('max-h-0', 'opacity-0');
-            workflowContainer.classList.add('max-h-[1000px]', 'opacity-100');
-            autoRunBtn.disabled = false;
-
-            // Show and animate cards in sequence
-            flowCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 200 * index + 400); 
-            });
-
-            // Initial setup and animation flow
+            // Trigger dashboard entry animation on load
             setTimeout(() => {
-                updateIconPositions();
-                dataOrb.classList.remove('hidden');
-                
-                // Initial orb placement (off-screen top-left, for a dramatic entrance)
-                dataOrb.style.transform = `translate(${icons[1].x - 12}px, ${icons[1].y - 200}px)`;
-
-                // Animate orb to the first position
-                setTimeout(() => {
-                    setActiveStep(1, true); // Set step 1 immediately
-                }, 800); 
-
-            }, 1200); 
-        }
-        
-        // Listener for card clicks (pauses auto-run and sets step manually)
-        flowCards.forEach(card => {
-            card.addEventListener('click', () => {
-                stopAutoRun(); // Stop the automated loop if running
-                const step = parseInt(card.getAttribute('data-step'));
-                setActiveStep(step);
-            });
-        });
-
-        // Listener for the Auto Run button
-        autoRunBtn.addEventListener('click', () => {
-            if (isRunning) {
-                stopAutoRun();
-            } else {
-                startAutoRun();
-            }
-        });
-
-
-        // Listener for the main hero CTA button
-        heroCta.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.getElementById('workflow').scrollIntoView({ behavior: 'smooth' });
-            
-            setTimeout(() => {
-                if (activeStep === 0) {
-                    startWorkflowAnimation();
+                const dashboardCard = document.getElementById('dashboard-card');
+                if (dashboardCard) {
+                    // This class triggers the CSS transition: opacity from 0 to 1, and translateY from 20px to 0.
+                    dashboardCard.classList.add('show');
                 }
-            }, 600); 
-        });
-
-        // Recalculate icon positions on window resize
-        window.addEventListener('resize', () => {
-            if (isOrbSetup) {
-                updateIconPositions();
-                moveOrb(activeStep);
-            }
-        });
-
-        // Re-setup on window load to ensure accurate SVG and orb placement
-        window.onload = function() {
-            updateIconPositions();
-            // Ensure the orb is placed correctly relative to the container
-            if (icons[1]) {
-                 const initialY = getRelativeCoordinates(document.getElementById(`icon-1`)).y;
-                dataOrb.style.transform = `translate(${icons[1].x - 12}px, ${initialY - 12}px)`;
-            }
+            }, 100); 
         };
-
-  <script>
-// Smoothly reveal workflow and auto-start simulation when "See How It Works" is clicked
-document.addEventListener("DOMContentLoaded", () => {
-  const heroCta = document.getElementById("hero-cta");
-  const section = document.getElementById("workflow");
-  const container = document.getElementById("workflow-container");
-  const runButton = document.getElementById("run-simulation"); // the simulation trigger button
-
-  if (heroCta && section && container) {
-    heroCta.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      // Reveal workflow section smoothly
-      container.style.transition = "all 0.8s ease-in-out";
-      container.style.maxHeight = "2000px";
-      container.style.opacity = "1";
-      container.classList.remove("overflow-hidden");
-
-      // Scroll into view
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-
-      // Auto-run simulation after short delay
-      setTimeout(() => {
-        if (runButton) {
-          runButton.click();
-        }
-      }, 1000); // delay so animation section opens first
-    });
-  }
-});
-</script>
-  </script>
-
+    </script>
 </body>
 </html>
