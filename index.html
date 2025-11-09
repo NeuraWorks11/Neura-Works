@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neura Work - AI Automation & CRM for Dental Clinics</title>
 
-  <meta name="description" content="Neura Work: The AI Automation & CRM agency specializing in dental clinics. We automate scheduling, recall, patient communication, and reduce no-shows by over 30%.">
-  <meta name="keywords" content="Dental CRM, AI automation dental, patient recall system, reduce no-shows, dental practice management, Neura Work">
+  <meta name="description" content="Neura Work: The AI Automation & CRM agency specializing in dental clinics. We automate scheduling, recall, patient communication, reduce no-shows, and filter spam.">
+  <meta name="keywords" content="Dental CRM, AI automation dental, patient recall system, reduce no-shows, dental practice management, Neura Work, WhatsApp automation, Spam filter">
   <meta name="author" content="Neura Work">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,7 +19,7 @@
     <style>
         :root {
             --primary-navy: #0F172A; /* Slate-900 for Primary Text/BG */
-            --secondary-accent: #22D3EE; /* Cyan-400 for Accent/Action */
+            --secondary-accent: #007BFF; /* Deep Trust Blue for Accent/Action */
             --light-bg: #F8FAFC; /* Slate-50 */
             --mid-bg: #1E293B; /* Slate-800 for dark sections */
             --whatsapp-green: #25D366; /* WhatsApp official color */
@@ -34,26 +34,40 @@
         .text-accent { color: var(--secondary-accent); }
         .bg-accent { background-color: var(--secondary-accent); }
 
-        /* Animation Keyframes */
-        @keyframes pulse-scale {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.05); opacity: 1; }
-        }
+        /* --- KEYFRAMES --- */
         @keyframes slide-in-bottom {
-            0% { opacity: 0; transform: translateY(20px); }
+            0% { opacity: 0; transform: translateY(40px); }
             100% { opacity: 1; transform: translateY(0); }
         }
         @keyframes graph-draw {
             to { stroke-dashoffset: 0; }
         }
-
-        /* Hero Glitch Effect */
-        .hero-title-glitch {
-            position: relative;
-            animation: pulse-scale 5s infinite ease-in-out;
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* New: Gliding Animation for Mobile Demo */
+        @keyframes glide-in {
+            0% { transform: translateX(100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        /* New: Floating dashboard icons */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
         }
 
-        /* Feature Card Hover Effect */
+
+        /* --- STYLING --- */
+        .hero-bg-gradient {
+            background: linear-gradient(-45deg, var(--primary-navy), #13244d, #0f172a, #13244d);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+        }
+
         .feature-card {
             transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
             animation: slide-in-bottom 0.8s ease-out forwards;
@@ -62,29 +76,32 @@
         .feature-card:nth-child(2) { animation-delay: 0.2s; }
         .feature-card:nth-child(3) { animation-delay: 0.4s; }
         .feature-card:hover {
-             transform: translateY(-8px);
-             box-shadow: 0 25px 50px rgba(34, 211, 238, 0.2); /* Accent shadow */
+             transform: translateY(-10px);
+             box-shadow: 0 30px 60px rgba(0, 123, 255, 0.3); /* Accent shadow */
         }
-
-        /* Process Flow - Animated Dots */
-        .process-dot {
-            animation: pulse-dot 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
-        }
+        
         .process-line {
             height: 100%;
             width: 4px;
-            background: linear-gradient(to bottom, var(--secondary-accent) 0%, rgba(34, 211, 238, 0) 100%);
-            opacity: 0.4;
+            background: linear-gradient(to bottom, var(--secondary-accent) 0%, rgba(0, 123, 255, 0) 100%);
+            opacity: 0.6;
         }
         
-        /* Results Graph Animation */
-        .animated-polyline {
-            stroke-dasharray: 1000; 
-            stroke-dashoffset: 1000;
-            animation: graph-draw 3s ease-in-out forwards;
-            animation-delay: 0.5s; 
+        /* Dashboard interactive icons */
+        .interactive-icon {
+            animation: float 4s ease-in-out infinite;
         }
 
+        /* Gliding Mobile Demo Box */
+        @media (max-width: 768px) {
+            .mobile-demo-box {
+                position: sticky;
+                top: 70px; /* Below the fixed header */
+                z-index: 40;
+                animation: glide-in 1.5s ease-out forwards;
+            }
+        }
+        
         /* Utility for delayed loading (if used with JS) */
         .animate-on-scroll {
             opacity: 0;
@@ -96,7 +113,7 @@
             transform: translateY(0);
         }
         
-        /* --- WHATSAPP FAB STYLES --- */
+        /* WHATSAPP FAB STYLES */
         .whatsapp-fab {
             position: fixed;
             bottom: 20px;
@@ -137,8 +154,8 @@
                 <a href="#video-ad" class="hover:text-accent transition duration-150">Demo</a>
                 <a href="#solutions" class="hover:text-accent transition duration-150">Automation</a>
                 <a href="#crm-core" class="hover:text-accent transition duration-150">Dental CRM</a>
-                <a href="#process" class="hover:text-accent transition duration-150">Our Process</a>
-                <a href="mailto:neuraworks11@gmail.com" class="px-5 py-2 bg-accent text-primary-navy rounded-full font-bold hover:bg-cyan-500 transition duration-300 shadow-lg">
+                <a href="#communications" class="hover:text-accent transition duration-150">Comms</a>
+                <a href="mailto:neuraworks11@gmail.com" class="px-5 py-2 bg-accent text-white rounded-full font-bold hover:bg-[#005bb5] transition duration-300 shadow-lg">
                     Email Consultation
                 </a>
             </nav>
@@ -152,37 +169,49 @@
             <a href="#video-ad" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Demo</a>
             <a href="#solutions" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Automation</a>
             <a href="#crm-core" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Dental CRM</a>
-            <a href="#process" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Our Process</a>
-            <a href="mailto:neuraworks11@gmail.com" class="block px-8 py-3 text-center mt-3 bg-accent text-primary-navy rounded-full mx-8 font-bold hover:bg-cyan-500 transition duration-300">
+            <a href="#communications" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Comms</a>
+            <a href="mailto:neuraworks11@gmail.com" class="block px-8 py-3 text-center mt-3 bg-accent text-white rounded-full mx-8 font-bold hover:bg-[#005bb5] transition duration-300">
                 Email Consultation
             </a>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="relative overflow-hidden pt-24 pb-32 bg-primary-navy text-white">
-            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Ccircle cx=\'5\' cy=\'5\' r=\'1\' fill=\'%2322D3EE\'/%3E%3C/svg%3E'); background-size: 20px 20px;"></div>
-
+        <section id="hero" class="relative overflow-hidden pt-24 pb-32 hero-bg-gradient text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                <p class="text-accent text-lg font-semibold uppercase tracking-widest mb-4 animate-on-scroll">
-                    Automate Patient Flow. Minimize No-Shows.
+                <p class="text-accent text-lg font-semibold uppercase tracking-widest mb-4 animate-on-scroll" style="animation-delay: 0.1s;">
+                    The Future of Practice Management is Here
                 </p>
-                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold leading-tight mb-6 hero-title-glitch">
-                    The <span class="text-accent">AI-Powered</span> Dental CRM
+                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold leading-tight mb-6 animate-on-scroll" style="animation-delay: 0.3s;">
+                    <span class="block">Innovate.</span> 
+                    <span class="block text-accent">Automate.</span> 
+                    <span class="block">Elevate.</span>
                 </h1>
-                <p class="text-xl sm:text-2xl text-gray-300 max-w-5xl mx-auto mb-12">
-                    Neura Work engineers bespoke automation and CRM integration to **save 30+ staff hours/week** and drive predictable recall revenue for your dental practice.
+                <p class="text-xl sm:text-2xl text-gray-300 max-w-5xl mx-auto mb-12 animate-on-scroll" style="animation-delay: 0.5s;">
+                    Neura Work delivers bespoke AI and CRM solutions to **eliminate up to 80% of administrative work** and optimize the entire patient journey for your dental practice.
                 </p>
 
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#process" class="px-10 py-4 bg-accent text-primary-navy text-xl font-bold rounded-full hover:bg-cyan-500 transition duration-300 shadow-2xl shadow-accent/50">
-                        Stop Losing Revenue
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-on-scroll" style="animation-delay: 0.7s;">
+                    <a href="#communications" class="px-10 py-4 bg-accent text-white text-xl font-bold rounded-full hover:bg-[#005bb5] transition duration-300 shadow-2xl shadow-accent/50">
+                        See Communication Workflows
                     </a>
                     <a href="https://wa.me/919264248108" target="_blank" class="px-10 py-4 border-2 border-accent text-accent text-xl font-bold rounded-full hover:bg-accent/10 transition duration-300">
                         <i data-lucide="message-circle" class="inline-block w-6 h-6 mr-2"></i>
                         WhatsApp Us Now
                     </a>
                 </div>
+            </div>
+        </section>
+
+        <section class="block md:hidden">
+            <div class="mobile-demo-box bg-whatsapp-green text-white p-3 shadow-2xl mb-4 rounded-xl mx-4 transform -translate-x-full opacity-0" style="animation-delay: 1.2s;">
+                <a href="https://wa.me/919264248108" target="_blank" class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i data-lucide="zap" class="w-6 h-6 mr-3"></i>
+                        <p class="font-bold text-sm">Tap for WhatsApp Demo! <span class="text-xs font-normal block">See automation live on your phone.</span></p>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </a>
             </div>
         </section>
 
@@ -195,7 +224,7 @@
                     See exactly how Neura Work minimizes no-shows and maximizes patient recall in a 60-second walkthrough.
                 </p>
                 
-                <div class="relative mx-auto w-full max-w-4xl pt-[56.25%] rounded-xl overflow-hidden shadow-2xl border-4 border-accent/50">
+                <div class="relative mx-auto w-full max-w-4xl pt-[56.25%] rounded-xl overflow-hidden shadow-2xl border-4 border-accent/50 animate-on-scroll">
                     <iframe 
                         class="absolute top-0 left-0 w-full h-full"
                         src="https://www.youtube.com/embed/3XHwmeJ-Ws8" 
@@ -209,85 +238,128 @@
 
             </div>
         </section>
-
+        
         <section id="solutions" class="py-24 bg-light-bg">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-primary-navy">AI Solutions That Drive Clinic Growth</h2>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-primary-navy">Intelligent Systems, Predictable Revenue</h2>
                 <p class="text-xl text-center text-gray-600 max-w-4xl mx-auto mb-16">
-                    Focus on dentistry, not paperwork. We automate the entire patient communication lifecycle.
+                    Our modular automation stack solves the biggest revenue leaks and efficiency drains in modern dental practices.
                 </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                     
                     <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border-t-4 border-accent">
                         <i data-lucide="calendar-check" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
                         <h3 class="text-2xl font-bold mb-2 text-primary-navy">No-Show Prevention Engine</h3>
-                        <p class="text-gray-600">Automated, personalized appointment reminders via SMS, email, and **WhatsApp**. Our system dynamically manages cancellations and instantly fills slots from a smart waitlist, cutting no-show rates by 30%.</p>
+                        <p class="text-gray-600">Context-aware reminders (SMS, WhatsApp, Email) that automatically re-engage and fill last-minute slots from an AI-managed smart waitlist.</p>
                     </div>
 
                     <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border-t-4 border-accent">
                         <i data-lucide="rotate-ccw" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
-                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Intelligent Recall & Recare</h3>
-                        <p class="text-gray-600">Set up rule-based automation based on clinical codes (P4, P6, etc.) directly in your CRM. Send targeted communications for check-ups, cleanings, and necessary procedures, ensuring high recall success.</p>
+                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Precision Recall & Recare</h3>
+                        <p class="text-gray-600">Automation triggered by clinical data (e.g., specific treatment codes). Customized patient journeys for hygiene, maintenance, and high-value follow-ups.</p>
+                    </div>
+
+                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border-t-4 border-red-500">
+                        <i data-lucide="filter" class="w-10 h-10 text-red-500 mb-4 p-2 bg-red-500/10 rounded-lg"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Intelligent Spam Filtering</h3>
+                        <p class="text-gray-600">Our AI layer analyzes incoming appointment requests and web forms to automatically **flag and filter out junk, spam, or test bookings**, keeping your schedule clean.</p>
                     </div>
 
                     <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border-t-4 border-accent">
                         <i data-lucide="shield-check" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
-                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Insurance & Claims Flow</h3>
-                        <p class="text-gray-600">Automate the tedious paperwork: generating digital insurance claims, tracking outstanding payments, and syncing billing information between your practice management software and accounting tools.</p>
+                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Compliance & Claims Flow</h3>
+                        <p class="text-gray-600">Streamline insurance submissions and patient billing. Automated financial follow-ups and ledger syncs, ensuring maximum cash flow.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="crm-core" class="py-24 bg-mid-bg text-white">
+        ---
+
+        <section id="communications" class="py-24 bg-mid-bg text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4">
+                    Personalized WhatsApp & Email Workflows
+                </h2>
+                <p class="text-xl text-center text-gray-400 max-w-4xl mx-auto mb-16">
+                    Eliminate reception calls. Our system handles 90% of patient communication dynamically across preferred channels.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    
+                    <div class="p-6 bg-gray-800 rounded-xl shadow-lg border-t-4 border-whatsapp-green animate-on-scroll">
+                        <i data-lucide="send" class="w-8 h-8 text-whatsapp-green mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2 text-white">Booking Confirmation & Thanks</h3>
+                        <p class="text-gray-300 text-sm">Instant, branded **WhatsApp** or Email confirmation. Includes calendar link and link to pre-registration forms.
+                            <br><span class="text-accent font-semibold">Example: "Thank you for booking, [Patient Name]! Your appointment is confirmed for [Date] at [Time]."</span></p>
+                    </div>
+
+                    <div class="p-6 bg-gray-800 rounded-xl shadow-lg border-t-4 border-red-400 animate-on-scroll" style="animation-delay: 0.2s;">
+                        <i data-lucide="alert-triangle" class="w-8 h-8 text-red-400 mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2 text-white">Slot Rejection & Spam Filtering</h3>
+                        <p class="text-gray-300 text-sm">If an appointment is **rejected** (e.g., due to overbooking) or flagged as **spam**, the system automatically notifies the sender with an alternative or moves the lead to the 'Spam' list for quick review.</p>
+                    </div>
+
+                    <div class="p-6 bg-gray-800 rounded-xl shadow-lg border-t-4 border-yellow-400 animate-on-scroll" style="animation-delay: 0.4s;">
+                        <i data-lucide="clock" class="w-8 h-8 text-yellow-400 mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2 text-white">Pre- and Post-Appointment Flows</h3>
+                        <p class="text-gray-300 text-sm">Automated reminders (3 days, 1 day) and post-visit **follow-up** for feedback/reviews or necessary re-bookings. Critical for minimizing no-shows and boosting reputation.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        ---
+        
+        <section id="crm-core" class="py-24 bg-light-bg text-primary-navy">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <p class="text-accent text-lg font-semibold uppercase tracking-widest mb-3">
-                            Patient Journey at the Core
+                        <p class="text-accent text-lg font-semibold uppercase tracking-widest mb-3 animate-on-scroll">
+                            Real-Time Insight, Zero Lag
                         </p>
-                        <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">
-                            Dental CRM: The Central Hub for Patient Health
+                        <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 animate-on-scroll">
+                            Interactive CRM Dashboard
                         </h2>
-                        <p class="text-gray-300 text-lg mb-8">
-                            A general CRM won't cut it. Neura Work customizes platforms like HubSpot or Pipedrive to function as a **Dental Patient Management System**, capturing clinical history, consent forms, and treatment progression, all integrated with your communication tools.
+                        <p class="text-gray-600 text-lg mb-8 animate-on-scroll">
+                            This isn't just a static report. Your dashboard is **interactive**, allowing you to tap filters to segment patient data, track treatment plans visually, and see the immediate impact of AI automation on your daily operations and revenue.
                         </p>
                         
-                        <div class="space-y-4">
+                        <div class="space-y-4 animate-on-scroll">
                             <div class="flex items-start">
-                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
-                                <p class="text-gray-200"><strong class="text-white">Unified Patient Profile:</strong> One dashboard for every patient interaction, from their first inquiry to post-op follow-up.</p>
+                                <i data-lucide="mouse-pointer-click" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
+                                <p class="text-gray-600"><strong class="text-primary-navy">Tap & Filter:</strong> Instantly view all patients due for recall, or only those who haven't responded to the 1-day reminder.</p>
                             </div>
                             <div class="flex items-start">
-                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
-                                <p class="text-gray-200"><strong class="text-white">Treatment Plan Tracking:</strong> Automated alerts when a patient is due for the next phase of a multi-stage treatment (e.g., implants, orthodontics).</p>
-                            </div>
-                            <div class="flex items-start">
-                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
-                                <p class="text-gray-200"><strong class="text-white">HIPAA/GDPR Compliance Focus:</strong> Ensuring all data automation adheres strictly to required medical privacy standards.</p>
+                                <i data-lucide="chart-bar-chart" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
+                                <p class="text-gray-600"><strong class="text-primary-navy">Live Performance Metrics:</strong> See no-show rates and spam appointments filtered out in real-time charts.</p>
                             </div>
                         </div>
                         
-                        <a href="mailto:neuraworks11@gmail.com" class="mt-10 inline-block px-8 py-3 bg-accent text-primary-navy font-bold rounded-full hover:bg-cyan-500 transition duration-300">
-                            Start Your Clinic Automation Audit
+                        <a href="#process" class="mt-10 inline-block px-8 py-3 bg-accent text-white font-bold rounded-full hover:bg-[#005bb5] transition duration-300 animate-on-scroll">
+                            View Implementation Process
                         </a>
                     </div>
                     
-                    <div class="relative p-6 bg-primary-navy rounded-xl shadow-2xl border border-gray-700 hidden lg:block">
-                        <h3 class="text-xl font-bold mb-4 text-accent">AI Patient Flow Dashboard</h3>
+                    <div class="relative p-6 bg-primary-navy rounded-xl shadow-2xl border border-gray-700 hidden lg:block animate-on-scroll" style="animation-delay: 0.3s;">
+                        <h3 class="text-xl font-bold mb-4 text-accent">Interactive Patient Flow</h3>
+                        
+                        <i data-lucide="user-plus" class="interactive-icon absolute top-4 right-10 w-8 h-8 text-green-400" style="animation-delay: 0.5s;"></i>
+                        <i data-lucide="bell" class="interactive-icon absolute bottom-20 left-10 w-6 h-6 text-yellow-400" style="animation-delay: 1.5s;"></i>
+                        
                         <div class="bg-gray-800 p-4 rounded-lg space-y-3">
                             <div class="flex justify-between items-center text-gray-300">
-                                <span class="font-medium">Total Automated Communication (Last 30 Days)</span>
-                                <span class="text-3xl font-extrabold text-white">7,890</span>
+                                <span class="font-medium">Appointments Filtered (Last 7 Days)</span>
+                                <span class="text-3xl font-extrabold text-white">45</span>
                             </div>
                             <div class="h-2 bg-gray-700 rounded-full">
-                                <div class="h-2 bg-accent rounded-full" style="width: 92%;"></div>
-                            </div>
+                                <div class="h-2 bg-red-400 rounded-full" style="width: 25%;"></div> <div class="h-2 bg-accent rounded-full" style="width: 75%; margin-top: -8px;"></div> </div>
                             <div class="grid grid-cols-3 gap-4 pt-4">
                                 <div class="bg-gray-900 p-3 rounded-lg text-center">
-                                    <p class="text-2xl font-bold text-red-400">32% ↓</p>
-                                    <p class="text-xs text-gray-400">No-Show Rate Reduction</p>
+                                    <p class="text-2xl font-bold text-red-400">5 <span class="text-base font-medium">Spam</span></p>
+                                    <p class="text-xs text-gray-400">Auto-Filtered Out</p>
                                 </div>
                                 <div class="bg-gray-900 p-3 rounded-lg text-center">
                                     <p class="text-2xl font-bold text-purple-400">88%</p>
@@ -304,148 +376,86 @@
             </div>
         </section>
 
+        ---
+
         <section id="process" class="py-24 bg-light-bg">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-primary-navy">Our 4-Step Patient Flow Blueprint</h2>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-primary-navy">The Neura Work 4-Step Blueprint</h2>
                 <p class="text-xl text-center text-gray-600 max-w-4xl mx-auto mb-16">
-                    A tested framework designed to integrate seamlessly with existing dental PMS systems.
+                    A tested framework to move your clinic from manual chaos to automated efficiency.
                 </p>
 
                 <div class="max-w-4xl mx-auto relative pl-10">
-                    <div class="process-line absolute left-12 top-0 bottom-0"></div>
+                    <div class="process-line absolute left-9 top-0 bottom-0"></div>
 
                     <div class="relative pb-16">
-                        <div class="absolute left-9 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot"></div>
+                        <div class="absolute left-6 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot"></div>
                         <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll">
                             <span class="text-accent font-extrabold text-3xl block mb-2">01</span>
                             <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
                                 <i data-lucide="stethoscope" class="w-6 h-6 mr-3 text-accent"></i>
-                                Audit Patient Journey & PMS
+                                Deep Dive Audit & System Mapping
                             </h3>
-                            <p class="text-lg text-gray-600">We map the existing patient journey, from initial contact to 6-month recall, and analyze your current Practice Management Software (PMS) integration points to identify automation gaps.</p>
+                            <p class="text-lg text-gray-600">We analyze your current Practice Management Software (PMS), patient booking flow, and manual administrative tasks to pinpoint the highest-impact automation opportunities.</p>
                         </div>
                     </div>
 
                     <div class="relative pb-16">
-                        <div class="absolute left-9 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 0.5s;"></div>
+                        <div class="absolute left-6 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 0.5s;"></div>
                         <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll" style="animation-delay: 0.2s;">
                             <span class="text-accent font-extrabold text-3xl block mb-2">02</span>
                             <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
                                 <i data-lucide="workflow" class="w-6 h-6 mr-3 text-accent"></i>
-                                Architect & Build Automation Workflows
+                                Architect & Deploy Custom Workflows
                             </h3>
-                            <p class="text-lg text-gray-600">We configure the CRM structure, build custom no-show reduction sequences, and implement AI scheduling agents that run seamlessly in the background, minimizing manual input.</p>
+                            <p class="text-lg text-gray-600">We configure the Dental CRM, build multi-channel reminder sequences, integrate AI assistants, and connect all required systems (PMS, VOIP, Accounting) securely.</p>
                         </div>
                     </div>
 
                     <div class="relative pb-16">
-                        <div class="absolute left-9 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 1.0s;"></div>
+                        <div class="absolute left-6 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 1.0s;"></div>
                         <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll" style="animation-delay: 0.4s;">
                             <span class="text-accent font-extrabold text-3xl block mb-2">03</span>
                             <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
                                 <i data-lucide="zap" class="w-6 h-6 mr-3 text-accent"></i>
-                                Clinical Deployment & Staff Training
+                                Seamless Clinical Go-Live & Training
                             </h3>
-                            <p class="text-lg text-gray-600">We launch the new system, ensure data integrity, and provide rigorous training for your staff to ensure high adoption rates. Automation is only effective when people use it correctly.</p>
+                            <p class="text-lg text-gray-600">The system goes live with rigorous data validation. We provide specialized training to your entire team—from receptionists to hygienists—ensuring 100% adoption and utilization.</p>
                         </div>
                     </div>
 
                     <div class="relative pb-0">
-                        <div class="absolute left-9 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 1.5s;"></div>
+                        <div class="absolute left-6 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 1.5s;"></div>
                         <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll" style="animation-delay: 0.6s;">
                             <span class="text-accent font-extrabold text-3xl block mb-2">04</span>
                             <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
                                 <i data-lucide="trending-up" class="w-6 h-6 mr-3 text-accent"></i>
-                                Performance & Scaling
+                                Continuous Optimization & Scaling
                             </h3>
-                            <p class="text-lg text-gray-600">We continuously monitor key dental metrics (no-show rate, recall success), refining the automation logic based on patient behavior to ensure maximum operational efficiency and revenue recovery.</p>
+                            <p class="text-lg text-gray-600">We stay engaged to monitor KPIs (no-show rate, case acceptance), refine automation logic based on patient flow changes, and scale the system as your practice grows.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="results" class="py-24 bg-primary-navy text-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-white">Measurable, Patient-Driven Outcomes</h2>
-                <p class="text-xl text-center text-gray-400 max-w-4xl mx-auto mb-16">
-                    Our focus is converting administrative time into chair time, resulting in higher throughput and happier patients.
-                </p>
+        ---
 
-                <div class="flex flex-col lg:flex-row gap-12 items-center">
-                    
-                    <div class="lg:w-1/3 space-y-8">
-                        <div class="bg-mid-bg p-6 rounded-xl shadow-xl border-l-4 border-accent animate-on-scroll">
-                            <p class="text-accent text-sm font-semibold mb-2">KEY CLINIC METRIC</p>
-                            <h3 class="text-4xl font-extrabold text-white">30% <span class="text-red-400 text-2xl">↓</span></h3>
-                            <p class="text-gray-300">Reduction in Appointment No-Show Rate</p>
-                        </div>
-                        <div class="bg-mid-bg p-6 rounded-xl shadow-xl border-l-4 border-accent animate-on-scroll" style="animation-delay: 0.3s;">
-                            <p class="text-accent text-sm font-semibold mb-2">KEY CLINIC METRIC</p>
-                            <h3 class="text-4xl font-extrabold text-white">4.7 <span class="text-yellow-400 text-2xl">★</span></h3>
-                            <p class="text-gray-300">Average Patient Review Score (Automated Follow-up)</p>
-                        </div>
-                        <div class="bg-mid-bg p-6 rounded-xl shadow-xl border-l-4 border-accent animate-on-scroll" style="animation-delay: 0.6s;">
-                            <p class="text-accent text-sm font-semibold mb-2">KEY CLINIC METRIC</p>
-                            <h3 class="text-4xl font-extrabold text-white">95% <span class="text-green-400 text-2xl">↑</span></h3>
-                            <p class="text-gray-300">Recall Patient Success Rate (6-Month Checkups)</p>
-                        </div>
-                    </div>
-
-                    <div class="lg:w-2/3 bg-mid-bg p-8 rounded-xl shadow-2xl animate-on-scroll" style="animation-delay: 0.9s;">
-                        <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
-                            <h3 class="text-2xl font-bold text-white">Recall Revenue Recovery Tracker</h3>
-                            <span class="text-accent font-medium">Q3 2024</span>
-                        </div>
-                        
-                        <svg viewBox="0 0 100 50" class="w-full h-auto" preserveAspectRatio="none">
-                            <defs>
-                                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:rgb(34, 211, 238);stop-opacity:0.8" />
-                                    <stop offset="100%" style="stop-color:rgb(6, 182, 212);stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            
-                            <text x="5" y="49" fill="#9CA3AF" font-size="2">Jul</text>
-                            <text x="25" y="49" fill="#9CA3AF" font-size="2">Aug</text>
-                            <text x="45" y="49" fill="#9CA3AF" font-size="2">Sep</text>
-                            <text x="65" y="49" fill="#9CA3AF" font-size="2">Oct</text>
-                            <text x="85" y="49" fill="#9CA3AF" font-size="2">Nov</text>
-                            
-                            <line x1="0" y1="5" x2="100" y2="5" stroke="#374151" stroke-width="0.1"/>
-                            <line x1="0" y1="25" x2="100" y2="25" stroke="#374151" stroke-width="0.1"/>
-                            <line x1="0" y1="45" x2="100" y2="45" stroke="#374151" stroke-width="0.1"/>
-                            
-                            <polyline
-                                points="5,40 25,30 45,20 65,10 85,5"
-                                fill="none"
-                                stroke="url(#lineGradient)"
-                                stroke-width="1.5"
-                                class="animated-polyline"
-                                stroke-linecap="round"
-                            />
-                            
-                            <circle cx="85" cy="5" r="1.5" fill="#22D3EE" class="opacity-0" style="animation: slide-in-bottom 0.1s forwards 3.5s;"/>
-                            <text x="75" y="3" fill="#22D3EE" font-size="3" font-weight="bold" class="opacity-0" style="animation: slide-in-bottom 0.1s forwards 3.5s;">+$XX Revenue</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20 bg-accent text-primary-navy">
+        <section class="py-20 bg-accent text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">
-                    Ready to Transform Your Patient Flow?
+                    Ready to Elevate Your Practice?
                 </h2>
                 <p class="text-xl max-w-3xl mx-auto mb-10">
-                    Email us directly to start the conversation about custom AI and CRM implementation for your dental practice.
+                    The single best investment you can make in the efficiency and scale of your dental clinic starts here.
                 </p>
                 <a href="mailto:neuraworks11@gmail.com" class="px-12 py-4 bg-primary-navy text-accent text-xl font-bold rounded-full hover:bg-slate-700 transition duration-300 shadow-2xl">
                     Email: neuraworks11@gmail.com
                 </a>
             </div>
         </section>
+
+        ---
 
         <footer class="bg-primary-navy pt-16 pb-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
@@ -470,8 +480,8 @@
                         <ul class="space-y-3 text-gray-400">
                             <li><a href="#solutions" class="hover:text-white transition duration-150">Recall Automation</a></li>
                             <li><a href="#crm-core" class="hover:text-white transition duration-150">No-Show Prevention</a></li>
-                            <li><a href="#process" class="hover:text-white transition duration-150">Patient Scheduling</a></li>
-                            <li><a href="#" class="hover:text-white transition duration-150">Data Compliance</a></li>
+                            <li><a href="#communications" class="hover:text-white transition duration-150">Communication Workflows</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-150">Spam Filtering</a></li>
                         </ul>
                     </div>
                     
@@ -492,7 +502,7 @@
                     <div>
                         <h4 class="text-xl font-bold mb-4 text-accent">Get Started</h4>
                         <p class="text-gray-400 mb-3">See the blueprint built for your specific clinic.</p>
-                        <a href="mailto:neuraworks11@gmail.com" class="block w-full text-center py-3 bg-accent text-primary-navy font-bold rounded-lg hover:bg-cyan-500 transition duration-300">
+                        <a href="mailto:neuraworks11@gmail.com" class="block w-full text-center py-3 bg-accent text-white font-bold rounded-lg hover:bg-[#005bb5] transition duration-300">
                             Inquire Now
                         </a>
                     </div>
@@ -530,7 +540,8 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('in-view');
-                        observer.unobserve(entry.target); 
+                        // Optional: stop observing after it's in view once
+                        // observer.unobserve(entry.target); 
                     }
                 });
             }, {
