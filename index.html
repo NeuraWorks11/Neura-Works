@@ -1,653 +1,508 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="GghLxs4IhuiZ7NpvI7Z9Sw3M5x9fuxwh6OXSIGteSHs" />
-  <title>Neura Works - Innovate. Automate. Elevate.</title>
+  <title>Neura Work - AI Automation & CRM Implementation Agency</title>
 
-  <!-- SEO meta tags -->
-  <meta name="description" content="Neura Works - Innovate. Automate. Elevate. We build smart automation and AI systems to help businesses save time and scale effortlessly.">
-  <meta name="keywords" content="Neura Works, AI automation, workflow automation, business automation, chatbot, WhatsApp automation">
-  <meta name="author" content="Neura Works">
+  <meta name="description" content="Neura Work: The AI Automation & CRM agency that builds custom systems to streamline operations, maximize customer value, and scale businesses effortlessly.">
+  <meta name="keywords" content="AI automation agency, CRM implementation, workflow optimization, business process automation, custom AI solutions, scaling business">
+  <meta name="author" content="Neura Work">
 
-  <!-- Load Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link here
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
   
-    <!-- Internal CSS -->
-      <style>
+    <style>
         :root {
-            --primary-blue: #0A3D62; /* Darker Blue */
-            --secondary-teal: #1ABC9C; /* Teal/Aqua */
+            --primary-navy: #0F172A; /* Slate-900 for Primary Text/BG */
+            --secondary-accent: #22D3EE; /* Cyan-400 for Accent/Action */
             --light-bg: #F8FAFC; /* Slate-50 */
-            --whatsapp-green: #25D366;
+            --mid-bg: #1E293B; /* Slate-800 for dark sections */
         }
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--light-bg);
-            color: var(--primary-blue);
+            color: var(--primary-navy);
         }
-        .text-primary { color: var(--primary-blue); }
-        .bg-secondary { background-color: var(--secondary-teal); }
-        .bg-primary { background-color: var(--primary-blue); }
+        .text-primary-navy { color: var(--primary-navy); }
+        .bg-primary-navy { background-color: var(--primary-navy); }
+        .text-accent { color: var(--secondary-accent); }
+        .bg-accent { background-color: var(--secondary-accent); }
 
-        /* Custom Hover & Animation Effects */
-        .hover-shadow:hover {
-            box-shadow: 0 12px 25px rgba(26, 188, 156, 0.4);
-            transform: translateY(-4px);
+        /* Animation Keyframes */
+        @keyframes pulse-scale {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
         }
-        .work-step, .feature-card {
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        .feature-card:hover {
-             transform: translateY(-8px);
-             box-shadow: 0 20px 40px rgba(10, 61, 98, 0.15);
-        }
-        
-        /* Hero Background Animation - Subtle Digital Mesh */
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-            opacity: 0.08;
-        }
-        .dot {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--secondary-teal);
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out alternate;
-            box-shadow: 0 0 10px var(--secondary-teal);
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
-            100% { transform: translate(calc(100vw - 100px), 100px) scale(1.1); opacity: 0.4; }
-        }
-        .dot:nth-child(2) { animation-delay: 5s; transform: translate(calc(100vw - 100px), 100px); }
-        .dot:nth-child(3) { animation-delay: 10s; }
-        .dot:nth-child(4) { animation-delay: 15s; transform: translate(calc(100vw - 100px), 100px); }
-
-        /* WhatsApp Mockup Styles */
-        .whatsapp-bubble {
-            max-width: 85%;
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 0.875rem;
-            line-height: 1.3;
-            animation: message-fade-in 1s ease-out;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-        }
-        .incoming {
-            background-color: #ffffff; /* White bubble */
-            margin-right: auto;
-            border-bottom-left-radius: 2px;
-        }
-        .outgoing {
-            background-color: #DCF8C6; /* Light green bubble */
-            margin-left: auto;
-            border-bottom-right-radius: 2px;
-        }
-        @keyframes message-fade-in {
+        @keyframes slide-in-bottom {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+        @keyframes graph-draw {
+            to { stroke-dashoffset: 0; }
+        }
 
-        /* Timeline Styles */
-        .timeline-item {
+        /* Hero Glitch Effect */
+        .hero-title-glitch {
             position: relative;
+            animation: pulse-scale 5s infinite ease-in-out;
         }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 17px;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: var(--secondary-teal);
-            opacity: 0.3;
-            z-index: 1;
+
+        /* Feature Card Hover Effect */
+        .feature-card {
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: slide-in-bottom 0.8s ease-out forwards;
+            opacity: 0;
         }
-        .timeline-dot {
-            position: absolute;
-            left: 8px;
-            top: 0;
-            width: 22px;
-            height: 22px;
-            background: var(--secondary-teal);
-            border: 4px solid var(--light-bg);
-            border-radius: 50%;
-            z-index: 2;
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.4s; }
+        .feature-card:hover {
+             transform: translateY(-8px);
+             box-shadow: 0 25px 50px rgba(34, 211, 238, 0.2); /* Accent shadow */
+        }
+
+        /* Process Flow - Animated Dots */
+        .process-dot {
             animation: pulse-dot 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
         }
-        @keyframes pulse-dot {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(26, 188, 156, 0.7); }
-            50% { box-shadow: 0 0 0 10px rgba(26, 188, 156, 0); }
+        .process-line {
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--secondary-accent) 0%, rgba(34, 211, 238, 0) 100%);
+            opacity: 0.4;
+        }
+        
+        /* Results Graph Animation */
+        .animated-polyline {
+            stroke-dasharray: 1000; 
+            stroke-dashoffset: 1000;
+            animation: graph-draw 3s ease-in-out forwards;
+            animation-delay: 0.5s; 
         }
 
-        /* --- New Dashboard & Graph Animations --- */
-        
-        /* Dashboard Gliding Card Effect (Starts invisible, glides up) */
-        .dashboard-card-entry {
+        /* Utility for delayed loading (if used with JS) */
+        .animate-on-scroll {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
+            transition: all 1s ease-out;
         }
-        .dashboard-card-entry.show {
+        .animate-on-scroll.in-view {
             opacity: 1;
             transform: translateY(0);
-            transition: all 1s ease-out 0.5s;
-        }
-        
-        /* Paper Aeroplane/Gliding Graph Animation Keyframes */
-        @keyframes graph-gliding {
-            0% { stroke-dashoffset: 100; opacity: 0; }
-            50% { opacity: 1; }
-            100% { stroke-dashoffset: 0; opacity: 1; }
-        }
-        
-        /* Apply to the SVG Polyline */
-        .animated-polyline {
-            stroke-dasharray: 100; /* Define the length of the line */
-            stroke-dashoffset: 100; /* Start offset at full length (hidden) */
-            animation: graph-gliding 2s ease-out forwards;
-            animation-delay: 1.5s; /* Delay after card is shown */
-        }
-
-        /* Video Modal CSS for Responsive Iframe */
-        #video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px; 
         }
         
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- 8. Video Modal (Lightbox) -->
-    <div id="video-modal" class="fixed inset-0 bg-black bg-opacity-75 z-[9999] hidden flex items-center justify-center p-4" onclick="closeVideoModal(event)">
-        <div class="w-full max-w-4xl bg-white rounded-xl shadow-2xl overflow-hidden relative" onclick="event.stopPropagation()">
-            <!-- Close Button -->
-            <button onclick="closeVideoModal()" class="absolute top-3 right-3 text-white z-50 p-2 rounded-full bg-black/50 hover:bg-black/70 transition">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            <!-- Video Container (Aspect Ratio Box) -->
-            <div id="video-container" class="relative" style="padding-bottom: 56.25%; /* 16:9 Aspect Ratio */">
-                <!-- YouTube iframe will be loaded here by JavaScript -->
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Navbar -->
-    <header class="sticky top-0 z-50 bg-white shadow-lg">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="text-2xl font-extrabold flex items-center">
-                <span class="text-primary">Neura</span><span class="text-secondary">Works</span>
-                <span class="text-xs ml-2 text-gray-400 font-light hidden sm:block">inovate.automate.elevate</span>
+            <div class="text-3xl font-extrabold flex items-center">
+                <span class="text-primary-navy">Neura</span><span class="text-accent">Work</span>
             </div>
-            <nav class="hidden md:flex space-x-8 text-primary font-medium">
-                <a href="#features" class="hover:text-secondary transition duration-150">Features</a>
-                <a href="#how-it-works" class="hover:text-secondary transition duration-150">Workflow Detail</a>
-                <a href="#pricing" class="hover:text-secondary transition duration-150">Pricing</a>
-                <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-4 py-2 bg-secondary text-white rounded-full font-bold hover-shadow transition duration-300">
-                    Book a Free Demo
+            <nav class="hidden md:flex space-x-8 text-primary-navy font-medium">
+                <a href="#solutions" class="hover:text-accent transition duration-150">AI Solutions</a>
+                <a href="#crm-core" class="hover:text-accent transition duration-150">CRM Core</a>
+                <a href="#process" class="hover:text-accent transition duration-150">Our Process</a>
+                <a href="#results" class="hover:text-accent transition duration-150">Results</a>
+                <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-5 py-2 bg-accent text-primary-navy rounded-full font-bold hover:bg-cyan-500 transition duration-300 shadow-lg">
+                    Schedule Discovery Call
                 </a>
             </nav>
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-primary focus:outline-none">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                <button id="mobile-menu-button" class="text-primary-navy focus:outline-none">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg pb-4">
-            <a href="#features" class="block px-8 py-2 text-primary hover:bg-gray-100">Features</a>
-            <a href="#how-it-works" class="block px-8 py-2 text-primary hover:bg-gray-100">Workflow Detail</a>
-            <a href="#pricing" class="block px-8 py-2 text-primary hover:bg-gray-100">Pricing</a>
-            <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block px-8 py-2 text-center mt-2 bg-secondary text-white rounded-full mx-8 font-bold hover-shadow transition duration-300">
-                Book a Free Demo
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl pb-4">
+            <a href="#solutions" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">AI Solutions</a>
+            <a href="#crm-core" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">CRM Core</a>
+            <a href="#process" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Our Process</a>
+            <a href="#results" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Results</a>
+            <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block px-8 py-3 text-center mt-3 bg-accent text-primary-navy rounded-full mx-8 font-bold hover:bg-cyan-500 transition duration-300">
+                Schedule Discovery Call
             </a>
         </div>
     </header>
 
     <main>
-        <!-- 1. Hero Section -->
-        <section id="hero" class="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32 bg-white">
-            <div class="hero-bg">
-                <!-- Floating digital nodes -->
-                <div class="dot" style="top: 10%; left: 10%; animation-duration: 18s;"></div>
-                <div class="dot" style="top: 50%; right: 10%; animation-duration: 22s; animation-delay: 4s;"></div>
-                <div class="dot" style="bottom: 5%; left: 40%; animation-duration: 16s; animation-delay: 8s;"></div>
-            </div>
+        <section id="hero" class="relative overflow-hidden pt-24 pb-32 bg-primary-navy text-white">
+            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Ccircle cx=\'5\' cy=\'5\' r=\'1\' fill=\'%2322D3EE\'/%3E%3C/svg%3E'); background-size: 20px 20px;"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 text-primary">
-                    Automate Your Dental Clinic with <span class="text-secondary">Neura Works</span>
+                <p class="text-accent text-lg font-semibold uppercase tracking-widest mb-4 animate-on-scroll">
+                    Automate. Integrate. Scale.
+                </p>
+                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold leading-tight mb-6 hero-title-glitch">
+                    Your <span class="text-accent">Custom AI</span> Automation Stack
                 </h1>
-                <p class="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto mb-10">
-                    Smart automation for booking, reminders, and follow-ups — **cut no-shows by 30%** so you can focus on patient care, not paperwork.
+                <p class="text-xl sm:text-2xl text-gray-300 max-w-5xl mx-auto mb-12">
+                    We don't just recommend tools; we **engineer bespoke AI-driven workflows** and integrate a **powerful CRM core** to streamline your operations and unlock exponential growth.
                 </p>
 
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-8 py-4 bg-secondary text-white text-lg font-bold rounded-full hover-shadow transition duration-300 shadow-xl">
-                        Book a Free Demo
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#process" class="px-10 py-4 bg-accent text-primary-navy text-xl font-bold rounded-full hover:bg-cyan-500 transition duration-300 shadow-2xl shadow-accent/50">
+                        See Our 4-Step Process
                     </a>
-                    <a href="https://wa.me/919264248108" target="_blank" class="px-8 py-4 border border-primary text-primary text-lg font-bold rounded-full hover:bg-gray-100 transition duration-300">
-                        <i data-lucide="message-square" class="inline-block w-5 h-5 mr-2"></i>
-                        Message Us on WhatsApp
+                    <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-10 py-4 border-2 border-accent text-accent text-xl font-bold rounded-full hover:bg-accent/10 transition duration-300">
+                        <i data-lucide="calendar-check" class="inline-block w-6 h-6 mr-2"></i>
+                        Book Strategy Call
                     </a>
                 </div>
-                <!-- Updated button to call the new modal function -->
-                <button onclick="playVideo('3XHwmeJ-Ws8')" class="mt-8 text-secondary font-semibold hover:underline transition duration-300 flex items-center justify-center mx-auto">
-                    <i data-lucide="play-circle" class="w-6 h-6 mr-2"></i>
-                    See How It Works (Quick Demo)
-                </button>
             </div>
         </section>
 
-        <!-- 2. How It Helps (Enhanced Features Section) -->
-        <section id="features" class="py-20 bg-light-bg">
+        ---
+
+        <section id="solutions" class="py-24 bg-light-bg">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-extrabold text-center mb-4 text-primary">Core Automation Power</h2>
-                <p class="text-xl text-center text-gray-500 max-w-3xl mx-auto mb-16">The modular tools that transform chaos into a seamless, profitable clinic operation.</p>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-primary-navy">Solutions Built for Scaling</h2>
+                <p class="text-xl text-center text-gray-600 max-w-4xl mx-auto mb-16">
+                    From lead capture to client fulfillment, we eliminate repetitive tasks and ensure zero revenue leakage.
+                </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     
-                    <!-- Feature 1: Smart Reminders (Detailed with WhatsApp Mockup) -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border border-teal-100 lg:col-span-2">
-                        <div class="flex items-start mb-4">
-                            <i data-lucide="bell-ring" class="w-12 h-12 text-secondary mr-4 p-2 bg-secondary/10 rounded-lg"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold mb-1 text-primary">No-Show Killer: Smart Reminders</h3>
-                                <p class="text-gray-600">Automated, timely reminders via **WhatsApp** and Email drastically reduce patient forgetfulness and missed appointments.</p>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 p-4 bg-gray-50 rounded-lg border-l-4 border-secondary/50">
-                            <p class="text-sm font-semibold mb-3 text-primary">Live WhatsApp Preview (Dummy Data):</p>
-                            <div class="w-full bg-gray-200 p-3 rounded-xl space-y-2">
-                                <!-- Outgoing Message 1 (Confirmation) -->
-                                <div class="whatsapp-bubble outgoing">
-                                    Hi [Patient Name], your appointment with Neura Dental is **Confirmed** for Dr. [Doctor Name] on **Fri, 15 Dec at 10:00 AM**.
-                                    <div class="text-xs text-gray-700 mt-1 flex justify-end items-center">
-                                        10:01 AM <i data-lucide="check-check" class="w-3 h-3 ml-1 text-blue-500"></i>
-                                    </div>
-                                </div>
-                                <!-- Outgoing Message 2 (Reminder - Doll up/follow up reminder) -->
-                                <div class="whatsapp-bubble outgoing" style="animation-delay: 0.5s;">
-                                    **24 Hour Reminder (Doll-Up Message):** Just a friendly reminder about your visit tomorrow. Remember to bring your insurance details. Please reply 'Y' to confirm or click here to reschedule: [Link]
-                                    <div class="text-xs text-gray-700 mt-1 flex justify-end items-center">
-                                        Yesterday 10:00 AM <i data-lucide="check-check" class="w-3 h-3 ml-1 text-blue-500"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border-t-4 border-accent">
+                        <i data-lucide="database" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">CRM & Data Unification</h3>
+                        <p class="text-gray-600">We integrate and optimize your CRM (HubSpot, Salesforce, Pipedrive, etc.) into a **single source of truth**, ensuring all lead, sales, and support data is instantly accessible and clean. *No more siloed spreadsheets.*</p>
                     </div>
 
-                    <!-- Feature 2: Automated Follow-ups & Reviews -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border border-gray-100">
-                        <i data-lucide="star" class="w-10 h-10 text-secondary mb-4 p-2 bg-secondary/10 rounded-lg"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary">Automated Reputation Growth</h3>
-                        <p class="text-gray-600">Automatically sends feedback requests and review links to patients post-treatment, boosting your online star rating and patient retention.</p>
-                        <div class="mt-4 flex space-x-1">
-                            <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
-                            <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
-                            <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
-                            <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
-                            <i data-lucide="star-half" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
-                        </div>
+                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border-t-4 border-accent">
+                        <i data-lucide="zap" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Intelligent Lead Nurturing</h3>
+                        <p class="text-gray-600">Deploy AI agents to qualify, nurture, and book leads 24/7 via chat, WhatsApp, or email. Only sales-ready prospects ever reach your human team, massively boosting conversion rates.</p>
                     </div>
 
-                    <!-- Feature 3: Spam & Fake Booking Filter (Spam Checking) -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border border-gray-100">
-                        <i data-lucide="shield-check" class="w-10 h-10 text-secondary mb-4 p-2 bg-secondary/10 rounded-lg"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary">Intelligent Spam Defense</h3>
-                        <p class="text-gray-600">A proactive filtering system instantly detects and blocks suspicious or fake bookings, ensuring your time slots are reserved for real patients only. Zero wasted effort.</p>
-                    </div>
-
-                    <!-- Feature 4: Dashboard & Analytics -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border border-gray-100">
-                        <i data-lucide="layout-dashboard" class="w-10 h-10 text-secondary mb-4 p-2 bg-secondary/10 rounded-lg"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary">Real-Time Clinic Oversight</h3>
-                        <p class="text-gray-600">Get an instant, holistic view of your practice's performance: appointments, confirmations rates, revenue metrics, and patient activity, all in one simplified dashboard.</p>
-                    </div>
-
-                     <!-- Feature 5: Campaign Sending -->
-                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border border-gray-100">
-                        <i data-lucide="megaphone" class="w-10 h-10 text-secondary mb-4 p-2 bg-secondary/10 rounded-lg"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary">Targeted Marketing Campaigns</h3>
-                        <p class="text-gray-600">Launch mass offers, holiday greetings, or specific service campaigns directly to segments of your patient list via WhatsApp/Email to fill slow slots quickly.</p>
+                    <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border-t-4 border-accent">
+                        <i data-lucide="robot" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Invoice & Reporting Automation</h3>
+                        <p class="text-gray-600">Automate recurring administrative tasks: generating invoices, processing payments, syncing data between accounting tools, and compiling weekly performance reports. Save 10+ hours per week.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        ---
 
-        <!-- 3. How It Works (Detailed Timeline & Visual Sequence) -->
-        <section id="how-it-works" class="py-20 bg-white">
+        <section id="crm-core" class="py-24 bg-mid-bg text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-extrabold text-center mb-4 text-primary">The Neura Works Workflow: Zero Effort, Maximum Efficiency</h2>
-                <p class="text-xl text-center text-gray-500 max-w-3xl mx-auto mb-16">See how a single booking automatically handles all communications and management for you.</p>
-
-                <div class="max-w-4xl mx-auto">
-                    <!-- Step 1: Patient Initiates Booking -->
-                    <div class="timeline-item pb-16">
-                        <div class="timeline-dot"></div>
-                        <div class="ml-12 p-6 bg-white rounded-xl shadow-lg border-l-4 border-secondary/50 work-step">
-                            <h3 class="text-2xl font-bold text-primary mb-3 flex items-center">
-                                <i data-lucide="user-plus" class="w-6 h-6 mr-3 text-secondary"></i>
-                                Step 1: Patient Books Online (The Start)
-                            </h3>
-                            <p class="text-lg text-gray-600">The patient finds your clinic online and uses your dedicated Neura Works booking link (integrated on your website or social media). They select a time, choose a doctor, and submit their details in less than 60 seconds.</p>
-                            <div class="mt-4 p-3 bg-teal-50 rounded-lg text-sm text-primary font-medium border border-teal-200">
-                                <i data-lucide="mouse-pointer-click" class="w-4 h-4 inline mr-2"></i>
-                                **Benefit:** Ultra-low friction booking experience leads to higher conversion of leads to appointments.
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p class="text-accent text-lg font-semibold uppercase tracking-widest mb-3">
+                            The Foundation of Growth
+                        </p>
+                        <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">
+                            Deep CRM Integration: More Than Just a Database
+                        </h2>
+                        <p class="text-gray-300 text-lg mb-8">
+                            We believe successful automation starts with a rock-solid **Customer Relationship Management (CRM) system**. Neura Work doesn't just bolt AI onto your existing processes—we refine your entire customer journey and build the automation directly into your CRM platform.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
+                                <p class="text-gray-200"><strong class="text-white">Workflow Mapping:</strong> Detailed auditing of your existing sales and support cycles before any code is written.</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
+                                <p class="text-gray-200"><strong class="text-white">Custom Objects & Fields:</strong> Tailoring the CRM structure to perfectly mirror your unique business model, not a generic template.</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
+                                <p class="text-gray-200"><strong class="text-white">AI-Driven Scoring:</strong> Implementing lead scoring and client health metrics powered by predictive AI within the CRM dashboard.</p>
+                            </div>
+                        </div>
+                        
+                        <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="mt-10 inline-block px-8 py-3 bg-accent text-primary-navy font-bold rounded-full hover:bg-cyan-500 transition duration-300">
+                            Start My CRM Audit
+                        </a>
+                    </div>
+                    
+                    <div class="relative p-6 bg-primary-navy rounded-xl shadow-2xl border border-gray-700 hidden lg:block">
+                        <h3 class="text-xl font-bold mb-4 text-accent">Neura Work Automation Dashboard</h3>
+                        <div class="bg-gray-800 p-4 rounded-lg space-y-3">
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span class="font-medium">Total Automated Tasks (Last 30 Days)</span>
+                                <span class="text-3xl font-extrabold text-white">14,352</span>
+                            </div>
+                            <div class="h-2 bg-gray-700 rounded-full">
+                                <div class="h-2 bg-accent rounded-full" style="width: 85%;"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 pt-4">
+                                <div class="bg-gray-900 p-3 rounded-lg text-center">
+                                    <p class="text-2xl font-bold text-green-400">98%</p>
+                                    <p class="text-xs text-gray-400">Chatbot Resolution Rate</p>
+                                </div>
+                                <div class="bg-gray-900 p-3 rounded-lg text-center">
+                                    <p class="text-2xl font-bold text-purple-400">3.5X</p>
+                                    <p class="text-xs text-gray-400">Lead Qualification Speed</p>
+                                </div>
+                                <div class="bg-gray-900 p-3 rounded-lg text-center">
+                                    <p class="text-2xl font-bold text-yellow-400">$2.1K</p>
+                                    <p class="text-xs text-gray-400">Estimated Cost Saved</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- Step 2: Neura Works Automation Core -->
-                    <div class="timeline-item pb-16">
-                        <div class="timeline-dot" style="top: 15px;"></div>
-                        <div class="ml-12 p-6 bg-white rounded-xl shadow-lg border-l-4 border-secondary/50 work-step">
-                            <h3 class="text-2xl font-bold text-primary mb-3 flex items-center">
-                                <i data-lucide="cpu" class="w-6 h-6 mr-3 text-secondary"></i>
-                                Step 2: Immediate Verification & Confirmation (The Magic)
+        ---
+
+        <section id="process" class="py-24 bg-light-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-primary-navy">Our 4-Step Automation Blueprint</h2>
+                <p class="text-xl text-center text-gray-600 max-w-4xl mx-auto mb-16">
+                    A tested framework to ensure every solution is perfectly tailored, robust, and delivers a measurable ROI.
+                </p>
+
+                <div class="max-w-4xl mx-auto relative pl-10">
+                    <div class="process-line absolute left-12 top-0 bottom-0"></div>
+
+                    <div class="relative pb-16">
+                        <div class="absolute left-9 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot"></div>
+                        <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll">
+                            <span class="text-accent font-extrabold text-3xl block mb-2">01</span>
+                            <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
+                                <i data-lucide="search" class="w-6 h-6 mr-3 text-accent"></i>
+                                Discovery & Process Mapping
                             </h3>
-                            <p class="text-lg text-gray-600 mb-4">The moment the booking hits the system, Neura Works handles two critical tasks automatically:</p>
+                            <p class="text-lg text-gray-600">We embed with your team to meticulously map every workflow, identify friction points, and pinpoint the highest-leverage opportunities for AI intervention. This ensures our work targets your most critical bottlenecks.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pb-16">
+                        <div class="absolute left-9 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 0.5s;"></div>
+                        <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll" style="animation-delay: 0.2s;">
+                            <span class="text-accent font-extrabold text-3xl block mb-2">02</span>
+                            <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
+                                <i data-lucide="code-square" class="w-6 h-6 mr-3 text-accent"></i>
+                                Architecture & Development
+                            </h3>
+                            <p class="text-lg text-gray-600">We design, build, and test your custom automation stack, integrating AI tools and connecting them seamlessly to your core CRM and existing tech stack. We prioritize security and scalability.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pb-16">
+                        <div class="absolute left-9 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 1.0s;"></div>
+                        <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll" style="animation-delay: 0.4s;">
+                            <span class="text-accent font-extrabold text-3xl block mb-2">03</span>
+                            <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
+                                <i data-lucide="zap" class="w-6 h-6 mr-3 text-accent"></i>
+                                Deployment & Team Training
+                            </h3>
+                            <p class="text-lg text-gray-600">We deploy the solution in phases, monitor for flawless operation, and provide rigorous training for your staff to ensure high adoption rates. Automation is only effective when people use it correctly.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pb-0">
+                        <div class="absolute left-9 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 1.5s;"></div>
+                        <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll" style="animation-delay: 0.6s;">
+                            <span class="text-accent font-extrabold text-3xl block mb-2">04</span>
+                            <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
+                                <i data-lucide="trending-up" class="w-6 h-6 mr-3 text-accent"></i>
+                                Optimization & Scaling
+                            </h3>
+                            <p class="text-lg text-gray-600">Post-launch, we continuously monitor performance dashboards, gather user feedback, and refine the AI logic to maximize efficiency and prepare the successful workflows for scaling across your entire organization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <section id="results" class="py-24 bg-primary-navy text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-white">Measurable, Guaranteed Outcomes</h2>
+                <p class="text-xl text-center text-gray-400 max-w-4xl mx-auto mb-16">
+                    Our clients typically see a 30% reduction in overhead and a 50% increase in lead-to-opportunity conversion within the first 90 days.
+                </p>
+
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    
+                    <div class="lg:w-1/3 space-y-8">
+                        <div class="bg-mid-bg p-6 rounded-xl shadow-xl border-l-4 border-accent animate-on-scroll">
+                            <p class="text-accent text-sm font-semibold mb-2">KEY PERFORMANCE INDICATOR</p>
+                            <h3 class="text-4xl font-extrabold text-white">50% <span class="text-2xl text-green-400">↑</span></h3>
+                            <p class="text-gray-300">Increase in Marketing Qualified Leads (MQLs)</p>
+                        </div>
+                        <div class="bg-mid-bg p-6 rounded-xl shadow-xl border-l-4 border-accent animate-on-scroll" style="animation-delay: 0.3s;">
+                            <p class="text-accent text-sm font-semibold mb-2">KEY PERFORMANCE INDICATOR</p>
+                            <h3 class="text-4xl font-extrabold text-white">30hrs <span class="text-2xl text-red-400">↓</span></h3>
+                            <p class="text-gray-300">Average Time Saved per Team Member/Month</p>
+                        </div>
+                        <div class="bg-mid-bg p-6 rounded-xl shadow-xl border-l-4 border-accent animate-on-scroll" style="animation-delay: 0.6s;">
+                            <p class="text-accent text-sm font-semibold mb-2">KEY PERFORMANCE INDICATOR</p>
+                            <h3 class="text-4xl font-extrabold text-white">99.8%</h3>
+                            <p class="text-gray-300">Data Synchronization Accuracy (CRM Core)</p>
+                        </div>
+                    </div>
+
+                    <div class="lg:w-2/3 bg-mid-bg p-8 rounded-xl shadow-2xl animate-on-scroll" style="animation-delay: 0.9s;">
+                        <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
+                            <h3 class="text-2xl font-bold text-white">Revenue Impact Tracker</h3>
+                            <span class="text-accent font-medium">Q3 2024</span>
+                        </div>
+                        
+                        <svg viewBox="0 0 100 50" class="w-full h-auto" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:rgb(34, 211, 238);stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:rgb(6, 182, 212);stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
                             
-                            <!-- Sub-step 2a: Spam Check Animation -->
-                            <div class="p-4 bg-red-50 rounded-lg mb-4 flex items-center animate-pulse-once border border-red-200">
-                                <i data-lucide="zap" class="w-6 h-6 text-red-600 mr-3 animate-ping-once"></i>
-                                <div>
-                                    <p class="font-semibold text-primary">Spam & Validity Check:</p>
-                                    <p class="text-sm text-gray-700">The system runs the patient details against our database to flag invalid numbers, bots, or known spam patterns. Only verified appointments proceed.</p>
-                                </div>
-                            </div>
-
-                            <!-- Sub-step 2b: Confirmation Message -->
-                            <div class="p-4 bg-green-50 rounded-lg flex items-center animate-pulse-once border border-green-200">
-                                <i data-lucide="send" class="w-6 h-6 text-green-600 mr-3 animate-bounce-once"></i>
-                                <div>
-                                    <p class="font-semibold text-primary">Instant Confirmation:</p>
-                                    <p class="text-sm text-gray-700">A personalized, branded confirmation message (WhatsApp/Email) is sent immediately, assuring the patient and formally securing the slot.</p>
-                                </div>
-                            </div>
-                        </div>
+                            <text x="5" y="49" fill="#9CA3AF" font-size="2">Jan</text>
+                            <text x="25" y="49" fill="#9CA3AF" font-size="2">Feb</text>
+                            <text x="45" y="49" fill="#9CA3AF" font-size="2">Mar</text>
+                            <text x="65" y="49" fill="#9CA3AF" font-size="2">Apr</text>
+                            <text x="85" y="49" fill="#9CA3AF" font-size="2">May</text>
+                            
+                            <line x1="0" y1="5" x2="100" y2="5" stroke="#374151" stroke-width="0.1"/>
+                            <line x1="0" y1="25" x2="100" y2="25" stroke="#374151" stroke-width="0.1"/>
+                            <line x1="0" y1="45" x2="100" y2="45" stroke="#374151" stroke-width="0.1"/>
+                            
+                            <polyline
+                                points="5,40 25,35 45,20 65,10 85,5"
+                                fill="none"
+                                stroke="url(#lineGradient)"
+                                stroke-width="1.5"
+                                class="animated-polyline"
+                                stroke-linecap="round"
+                            />
+                            
+                            <circle cx="85" cy="5" r="1.5" fill="#22D3EE" class="opacity-0" style="animation: slide-in-bottom 0.1s forwards 3.5s;"/>
+                            <text x="75" y="3" fill="#22D3EE" font-size="3" font-weight="bold" class="opacity-0" style="animation: slide-in-bottom 0.1s forwards 3.5s;">+300% ROI</text>
+                        </svg>
                     </div>
-
-                    <!-- Step 3: Live Dashboard & Staff Notification -->
-                    <div class="timeline-item pb-16">
-                        <div class="timeline-dot" style="top: 15px;"></div>
-                        <div class="ml-12 p-6 bg-white rounded-xl shadow-lg border-l-4 border-secondary/50 work-step">
-                            <h3 class="text-2xl font-bold text-primary mb-3 flex items-center">
-                                <i data-lucide="eye" class="w-6 h-6 mr-3 text-secondary"></i>
-                                Step 3: Staff Visibility and Live Updates (The Outcome)
-                            </h3>
-                            <p class="text-lg text-gray-600 mb-4">The new, verified appointment instantly populates the **Neura Works Dashboard**. Your reception staff sees the update in real-time. The system then automatically queues follow-ups, reminders (1 day before), and post-visit review requests.</p>
-
-                            <div class="mt-4 p-3 bg-blue-50 rounded-lg text-sm text-primary font-medium border border-blue-200">
-                                <i data-lucide="loader-2" class="w-4 h-4 inline mr-2 animate-spin"></i>
-                                **Staff Focus:** Your team moves from repetitive tasks (calling, typing) to high-value tasks (patient reception, billing).
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-12">
-                    <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-10 py-4 bg-primary text-white text-xl font-bold rounded-full hover-shadow transition duration-300 shadow-xl border-4 border-transparent hover:border-secondary">
-                        See the Dashboard in Action - Book Demo
-                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- 4. Dashboard Preview Section -->
-        <section id="dashboard" class="py-20 bg-primary/5">
+        ---
+
+        <section class="py-20 bg-accent text-primary-navy">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-bold mb-4 text-primary">Your Centralized Command Center</h2>
-                <p class="text-lg text-gray-500 mb-12">Monitor your entire clinic workflow from one dashboard.</p>
-
-                <!-- Mockup Dashboard Card with gliding entry effect -->
-                <div id="dashboard-card" class="bg-white p-6 md:p-10 rounded-2xl shadow-2xl border border-gray-100 max-w-4xl mx-auto dashboard-card-entry">
-                    <!-- Header -->
-                    <div class="flex justify-between items-center mb-6 border-b pb-4">
-                        <h3 class="text-2xl font-semibold text-primary">Neura Works Dashboard</h3>
-                        <span class="text-sm font-medium text-gray-500 flex items-center">
-                            <i data-lucide="power" class="w-4 h-4 mr-1 text-secondary"></i>
-                            Live Status
-                        </span>
-                    </div>
-
-                    <!-- Stats Cards -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <div class="p-4 bg-blue-50 rounded-xl text-left shadow-sm">
-                            <p class="text-sm text-gray-500">Today's Appointments</p>
-                            <div class="flex items-center mt-1">
-                                <span class="text-3xl font-bold text-primary">12</span>
-                                <i data-lucide="check-circle" class="ml-auto w-6 h-6 text-green-500"></i>
-                            </div>
-                        </div>
-                        <div class="p-4 bg-teal-50 rounded-xl text-left shadow-sm">
-                            <p class="text-sm text-gray-500">Upcoming (7 days)</p>
-                            <span class="text-3xl font-bold text-primary">45</span>
-                            <i data-lucide="calendar-check" class="ml-auto w-6 h-6 text-teal-500"></i>
-                        </div>
-                        <div class="p-4 bg-gray-50 rounded-xl text-left shadow-sm">
-                            <p class="text-sm text-gray-500">Total Patients</p>
-                            <span class="text-3xl font-bold text-primary">1,289</span>
-                            <i data-lucide="users" class="ml-auto w-6 h-6 text-gray-500"></i>
-                        </div>
-                    </div>
-
-                    <!-- Graph/Chart Mockup and Confirmation Icon -->
-                    <div class="flex flex-col lg:flex-row gap-6">
-                        <div class="lg:w-3/4 h-64 bg-gray-50 rounded-xl p-4 border border-gray-200">
-                            <p class="text-xs text-gray-500 mb-2">Monthly Booking Trend (Gliding Animation)</p>
-                            <!-- Simple line graph simulation with SVG -->
-                            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                <!-- The polyline now has the animated-polyline class for the gliding effect -->
-                                <polyline class="animated-polyline" fill="none" stroke="var(--secondary-teal)" stroke-width="2" points="0,90 20,70 40,50 60,30 80,40 100,20" />
-                                <circle cx="100" cy="20" r="3" fill="var(--secondary-teal)" />
-                            </svg>
-                        </div>
-                        <div class="lg:w-1/4 flex flex-col items-center justify-center bg-green-50 rounded-xl p-4 shadow-inner">
-                            <i data-lucide="whatsapp" class="w-12 h-12 text-green-600 mb-2"></i>
-                            <p class="text-lg font-semibold text-green-700">98% Auto-Confirmed</p>
-                            <p class="text-sm text-gray-600 text-center">via Smart WhatsApp</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. Testimonials -->
-        <section id="testimonials" class="py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12 text-primary">Trusted by Dental Professionals</h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-secondary/70 feature-card">
-                        <i data-lucide="quote" class="w-8 h-8 text-secondary mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">“Neura Works is a game changer. It reduced our no-shows by 30% almost instantly! Patients truly appreciate the automated reminders.”</p>
-                        <p class="font-semibold text-primary">— Dr. Priya Sharma, Clinic Owner</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-secondary/70 feature-card">
-                        <i data-lucide="quote" class="w-8 h-8 text-secondary mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">“Super easy to use. The simple dashboard meant zero training time for our staff. It literally saves us hours every single week.”</p>
-                        <p class="font-semibold text-primary">— Sandeep Singh, Practice Manager</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-secondary/70 feature-card">
-                        <i data-lucide="quote" class="w-8 h-8 text-secondary mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">“The automated follow-ups have been incredible for retention. It makes sure no patient falls through the cracks and keeps our books full.”</p>
-                        <p class="font-semibold text-primary">— Dr.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. Pricing Plans -->
-        <section id="pricing" class="py-20 bg-primary/5">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-4 text-primary">Simple, Predictable Pricing</h2>
-                <p class="text-lg text-center text-gray-500 mb-16">No hidden fees. Scale your automation as your clinic grows.</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Starter Plan -->
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover-shadow transition duration-300 feature-card">
-                        <h3 class="text-2xl font-bold text-primary mb-2">Starter</h3>
-                        <p class="text-gray-600 mb-4">For small clinics establishing their digital presence.</p>
-                        <p class="text-5xl font-extrabold text-primary mb-6">₹1,499<span class="text-xl font-medium text-gray-500">/month</span></p>
-                        <ul class="space-y-3 text-gray-700 mb-8">
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Online Booking Page</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Basic Email Reminders</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Single User Access</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Spam Filter</li>
-                        </ul>
-                        <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block w-full text-center py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 transition duration-300">Start Automating</a>
-                    </div>
-
-                    <!-- Growth Plan (Recommended) -->
-                    <div class="bg-primary text-white p-8 rounded-2xl shadow-2xl border-4 border-secondary scale-105 feature-card">
-                        <div class="text-sm font-bold bg-secondary rounded-full inline-block px-4 py-1 mb-3 text-primary">RECOMMENDED</div>
-                        <h3 class="text-2xl font-bold mb-2">Growth</h3>
-                        <p class="mb-4 text-primary/30">For busy clinics focused on high-volume patient throughput.</p>
-                        <p class="text-5xl font-extrabold mb-6">₹4,999<span class="text-xl font-medium text-primary/30">/month</span></p>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Everything in Starter</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i><span class="font-bold">Smart WhatsApp Reminders</span></li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Automated Follow-ups & Reviews</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Real-Time Dashboard Access</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Up to 5 Staff Users</li>
-                        </ul>
-                        <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block w-full text-center py-3 bg-secondary text-primary font-bold rounded-full hover-shadow transition duration-300">Book Demo for Growth</a>
-                    </div>
-
-                    <!-- Pro Plan -->
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover-shadow transition duration-300 feature-card">
-                        <h3 class="text-2xl font-bold text-primary mb-2">Pro</h3>
-                        <p class="text-gray-600 mb-4">For multi-doctor setups and clinics with multiple locations.</p>
-                        <p class="text-5xl font-extrabold text-primary mb-6">₹9,999<span class="text-xl font-medium text-gray-500">/month</span></p>
-                        <ul class="space-y-3 text-gray-700 mb-8">
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Everything in Growth</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Multi-Doctor/Location Support</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Targeted Mass Offer Campaigns</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Priority 24/7 Support</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-3 text-secondary"></i>Custom Integration (API)</li>
-                        </ul>
-                        <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block w-full text-center py-3 border-2 border-primary text-primary font-semibold rounded-full hover:bg-gray-100 transition duration-300">Contact Sales</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. Call to Action / Footer -->
-        <footer class="bg-primary text-white py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">Automate. Relax. Grow.</h2>
-                <p class="text-lg mb-8 text-primary/30 max-w-2xl mx-auto">Stop managing your software, start managing your patients. Let Neura Works handle the rest.</p>
-
-                <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="inline-block px-12 py-4 bg-secondary text-primary text-xl font-bold rounded-full hover-shadow transition duration-300 shadow-xl">
-                    Book a Demo Now
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">
+                    Ready to Stop Leaving Money on the Table?
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto mb-10">
+                    Your competitors are automating. Schedule a free, 30-minute strategy session to see the exact automation blueprint we'd build for your business.
+                </p>
+                <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-12 py-4 bg-primary-navy text-accent text-xl font-bold rounded-full hover:bg-slate-700 transition duration-300 shadow-2xl">
+                    Claim Your Free Strategy Session
                 </a>
+            </div>
+        </section>
 
-                <div class="mt-12 pt-8 border-t border-primary/50 text-gray-400 text-sm">
-                    <p class="mb-4">&copy; 2025 Neura Works. All rights reserved. | <span class="font-medium">inovate.automate.elevate</span></p>
-                    <div class="flex justify-center space-x-6">
-                        <a href="https://wa.me/919264248108" target="_blank" class="hover:text-secondary transition duration-300 flex items-center">
-                            <i data-lucide="message-square" class="w-4 h-4 mr-1"></i> +91-9264248108 (WhatsApp)
-                        </a>
-                        <a href="mailto:neuraworks11@gmail.com" class="hover:text-secondary transition duration-300 flex items-center">
-                            <i data-lucide="mail" class="w-4 h-4 mr-1"></i> neuraworks11@gmail.com
-                        </a>
+        ---
+
+        <footer class="bg-primary-navy pt-16 pb-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/20 pb-10 mb-8">
+                    
+                    <div>
+                        <div class="text-3xl font-extrabold mb-3">
+                            <span class="text-white">Neura</span><span class="text-accent">Work</span>
+                        </div>
+                        <p class="text-gray-400 text-sm max-w-xs">
+                            Engineering the next generation of scalable business operations through AI and CRM power.
+                        </p>
+                        <div class="flex space-x-4 mt-6">
+                             <a href="#" class="text-gray-400 hover:text-accent transition duration-150"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                             <a href="#" class="text-gray-400 hover:text-accent transition duration-150"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                             <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="text-gray-400 hover:text-accent transition duration-150"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+                        </div>
                     </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-accent">Solutions</h4>
+                        <ul class="space-y-3 text-gray-400">
+                            <li><a href="#solutions" class="hover:text-white transition duration-150">AI Automation</a></li>
+                            <li><a href="#crm-core" class="hover:text-white transition duration-150">CRM Integration</a></li>
+                            <li><a href="#process" class="hover:text-white transition duration-150">Scaling Workflows</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-150">Custom Development</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-accent">Agency</h4>
+                        <ul class="space-y-3 text-gray-400">
+                            <li><a href="#" class="hover:text-white transition duration-150">Case Studies</a></li>
+                            <li><a href="#results" class="hover:text-white transition duration-150">Measurable Results</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-150">Careers</a></li>
+                            <li><a href="#" class="hover:text-white transition duration-150">Privacy & Terms</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-accent">Contact</h4>
+                        <p class="text-gray-400 mb-3">Ready to begin your automation journey?</p>
+                        <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block w-full text-center py-3 bg-accent text-primary-navy font-bold rounded-lg hover:bg-cyan-500 transition duration-300">
+                            Get in Touch
+                        </a>
+                        <p class="text-xs text-gray-500 mt-4">Inquiries: <a href="mailto:contact@neurawork.io" class="hover:text-white">contact@neurawork.io</a></p>
+                    </div>
+
                 </div>
+                
+                <div class="text-center text-gray-500 text-sm">
+                    &copy; <span id="current-year"></span> Neura Work. All rights reserved.
+                </div>
+
             </div>
         </footer>
 
     </main>
-
+    
     <script>
-        
-        // --- Video Modal Logic ---
-        function playVideo(videoId) {
-            const modal = document.getElementById('video-modal');
-            const videoContainer = document.getElementById('video-container');
+        // 1. Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
 
-            // Construct the secure, autoplay embed URL
-            const embedUrl = `https://www.youtube.com/embed/${https://youtu.be/3XHwmeJ-Ws8?si=ezmXyJZ0JqevtkGH}?autoplay=1&rel=0`;
+        // 2. Set Current Year in Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            // Create the iframe element
-            const iframe = document.createElement('iframe');
-            iframe.setAttribute('src', embedUrl);
-            iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen');
-            iframe.setAttribute('frameborder', '0');
-            iframe.setAttribute('allowfullscreen', '');
-            
-            // Load it into the container
-            videoContainer.innerHTML = ''; // Clear previous content
-            videoContainer.appendChild(iframe);
-            
-            // Show the modal
-            modal.classList.remove('hidden');
-        }
-
-        function closeVideoModal(event) {
-            const modal = document.getElementById('video-modal');
-            // Check if the click occurred on the background (event.target === modal) 
-            // or if the function was called directly from the close button
-            if (!event || event.target === modal) {
-                const videoContainer = document.getElementById('video-container');
-                // Stop video playback by removing the iframe
-                videoContainer.innerHTML = '';
-                modal.classList.add('hidden');
-            }
-        }
-
-        // --- Initialization and Animations ---
-        window.onload = function () {
-            // Initialize Lucide icons
+        // 3. Lucide Icon Refresh
+        window.onload = function() {
             lucide.createIcons();
-
-            // Mobile Menu Toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-
-                // Close menu on link click
-                mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                    });
-                });
-            }
-            
-            // Trigger dashboard entry animation on load
-            setTimeout(() => {
-                const dashboardCard = document.getElementById('dashboard-card');
-                if (dashboardCard) {
-                    // This class triggers the CSS transition: opacity from 0 to 1, and translateY from 20px to 0.
-                    dashboardCard.classList.add('show');
-                }
-            }, 100); 
+            // Optional: Start scroll animation check on load
+            observeAnimations();
         };
+
+        // 4. Simple Scroll-In Animation Logic
+        // This makes elements with class 'animate-on-scroll' fade in when they enter the viewport
+        function observeAnimations() {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        // Stop observing once it's visible (optional)
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of element is visible
+            });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+        }
     </script>
+
 </body>
 </html>
