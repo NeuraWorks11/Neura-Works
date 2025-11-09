@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neura Work - AI Automation & CRM Implementation Agency</title>
+  <title>Neura Work - AI Automation & CRM for Dental Clinics</title>
 
-  <meta name="description" content="Neura Work: The AI Automation & CRM agency that builds custom systems to streamline operations, maximize customer value, and scale businesses effortlessly.">
-  <meta name="keywords" content="AI automation agency, CRM implementation, workflow optimization, business process automation, custom AI solutions, scaling business">
+  <meta name="description" content="Neura Work: The AI Automation & CRM agency specializing in dental clinics. We automate scheduling, recall, patient communication, and reduce no-shows by over 30%.">
+  <meta name="keywords" content="Dental CRM, AI automation dental, patient recall system, reduce no-shows, dental practice management, Neura Work">
   <meta name="author" content="Neura Work">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,6 +22,7 @@
             --secondary-accent: #22D3EE; /* Cyan-400 for Accent/Action */
             --light-bg: #F8FAFC; /* Slate-50 */
             --mid-bg: #1E293B; /* Slate-800 for dark sections */
+            --whatsapp-green: #25D366; /* WhatsApp official color */
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -95,9 +96,37 @@
             transform: translateY(0);
         }
         
+        /* --- WHATSAPP FAB STYLES --- */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: var(--whatsapp-green);
+            color: white;
+            border-radius: 50%;
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse-fab 2s infinite;
+        }
+        .whatsapp-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+        }
+        @keyframes pulse-fab {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
     </style>
 </head>
 <body class="antialiased">
+    
+    <a href="https://wa.me/919264248108" target="_blank" class="whatsapp-fab" aria-label="Chat with Neura Work on WhatsApp">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </a>
 
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
@@ -105,12 +134,12 @@
                 <span class="text-primary-navy">Neura</span><span class="text-accent">Work</span>
             </div>
             <nav class="hidden md:flex space-x-8 text-primary-navy font-medium">
-                <a href="#solutions" class="hover:text-accent transition duration-150">AI Solutions</a>
-                <a href="#crm-core" class="hover:text-accent transition duration-150">CRM Core</a>
+                <a href="#video-ad" class="hover:text-accent transition duration-150">Demo</a>
+                <a href="#solutions" class="hover:text-accent transition duration-150">Automation</a>
+                <a href="#crm-core" class="hover:text-accent transition duration-150">Dental CRM</a>
                 <a href="#process" class="hover:text-accent transition duration-150">Our Process</a>
-                <a href="#results" class="hover:text-accent transition duration-150">Results</a>
-                <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-5 py-2 bg-accent text-primary-navy rounded-full font-bold hover:bg-cyan-500 transition duration-300 shadow-lg">
-                    Schedule Discovery Call
+                <a href="mailto:neuraworks11@gmail.com" class="px-5 py-2 bg-accent text-primary-navy rounded-full font-bold hover:bg-cyan-500 transition duration-300 shadow-lg">
+                    Email Consultation
                 </a>
             </nav>
             <div class="md:hidden">
@@ -120,12 +149,12 @@
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl pb-4">
-            <a href="#solutions" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">AI Solutions</a>
-            <a href="#crm-core" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">CRM Core</a>
+            <a href="#video-ad" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Demo</a>
+            <a href="#solutions" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Automation</a>
+            <a href="#crm-core" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Dental CRM</a>
             <a href="#process" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Our Process</a>
-            <a href="#results" class="block px-8 py-2 text-primary-navy hover:bg-gray-100">Results</a>
-            <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block px-8 py-3 text-center mt-3 bg-accent text-primary-navy rounded-full mx-8 font-bold hover:bg-cyan-500 transition duration-300">
-                Schedule Discovery Call
+            <a href="mailto:neuraworks11@gmail.com" class="block px-8 py-3 text-center mt-3 bg-accent text-primary-navy rounded-full mx-8 font-bold hover:bg-cyan-500 transition duration-300">
+                Email Consultation
             </a>
         </div>
     </header>
@@ -136,117 +165,137 @@
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                 <p class="text-accent text-lg font-semibold uppercase tracking-widest mb-4 animate-on-scroll">
-                    Automate. Integrate. Scale.
+                    Automate Patient Flow. Minimize No-Shows.
                 </p>
                 <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold leading-tight mb-6 hero-title-glitch">
-                    Your <span class="text-accent">Custom AI</span> Automation Stack
+                    The <span class="text-accent">AI-Powered</span> Dental CRM
                 </h1>
                 <p class="text-xl sm:text-2xl text-gray-300 max-w-5xl mx-auto mb-12">
-                    We don't just recommend tools; we **engineer bespoke AI-driven workflows** and integrate a **powerful CRM core** to streamline your operations and unlock exponential growth.
+                    Neura Work engineers bespoke automation and CRM integration to **save 30+ staff hours/week** and drive predictable recall revenue for your dental practice.
                 </p>
 
                 <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                     <a href="#process" class="px-10 py-4 bg-accent text-primary-navy text-xl font-bold rounded-full hover:bg-cyan-500 transition duration-300 shadow-2xl shadow-accent/50">
-                        See Our 4-Step Process
+                        Stop Losing Revenue
                     </a>
-                    <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-10 py-4 border-2 border-accent text-accent text-xl font-bold rounded-full hover:bg-accent/10 transition duration-300">
-                        <i data-lucide="calendar-check" class="inline-block w-6 h-6 mr-2"></i>
-                        Book Strategy Call
+                    <a href="https://wa.me/919264248108" target="_blank" class="px-10 py-4 border-2 border-accent text-accent text-xl font-bold rounded-full hover:bg-accent/10 transition duration-300">
+                        <i data-lucide="message-circle" class="inline-block w-6 h-6 mr-2"></i>
+                        WhatsApp Us Now
                     </a>
                 </div>
             </div>
         </section>
 
-        ---
+        <section id="video-ad" class="py-24 bg-mid-bg text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">
+                    Watch Our Dental AI Automation Demo
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-10">
+                    See exactly how Neura Work minimizes no-shows and maximizes patient recall in a 60-second walkthrough.
+                </p>
+                
+                <div class="relative mx-auto w-full max-w-4xl pt-[56.25%] rounded-xl overflow-hidden shadow-2xl border-4 border-accent/50">
+                    <iframe 
+                        class="absolute top-0 left-0 w-full h-full"
+                        src="https://www.youtube.com/embed/3XHwmeJ-Ws8" 
+                        title="Neura Work Dental AI Automation Demo" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+            </div>
+        </section>
 
         <section id="solutions" class="py-24 bg-light-bg">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-primary-navy">Solutions Built for Scaling</h2>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-primary-navy">AI Solutions That Drive Clinic Growth</h2>
                 <p class="text-xl text-center text-gray-600 max-w-4xl mx-auto mb-16">
-                    From lead capture to client fulfillment, we eliminate repetitive tasks and ensure zero revenue leakage.
+                    Focus on dentistry, not paperwork. We automate the entire patient communication lifecycle.
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     
                     <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border-t-4 border-accent">
-                        <i data-lucide="database" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
-                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">CRM & Data Unification</h3>
-                        <p class="text-gray-600">We integrate and optimize your CRM (HubSpot, Salesforce, Pipedrive, etc.) into a **single source of truth**, ensuring all lead, sales, and support data is instantly accessible and clean. *No more siloed spreadsheets.*</p>
+                        <i data-lucide="calendar-check" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">No-Show Prevention Engine</h3>
+                        <p class="text-gray-600">Automated, personalized appointment reminders via SMS, email, and **WhatsApp**. Our system dynamically manages cancellations and instantly fills slots from a smart waitlist, cutting no-show rates by 30%.</p>
                     </div>
 
                     <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border-t-4 border-accent">
-                        <i data-lucide="zap" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
-                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Intelligent Lead Nurturing</h3>
-                        <p class="text-gray-600">Deploy AI agents to qualify, nurture, and book leads 24/7 via chat, WhatsApp, or email. Only sales-ready prospects ever reach your human team, massively boosting conversion rates.</p>
+                        <i data-lucide="rotate-ccw" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Intelligent Recall & Recare</h3>
+                        <p class="text-gray-600">Set up rule-based automation based on clinical codes (P4, P6, etc.) directly in your CRM. Send targeted communications for check-ups, cleanings, and necessary procedures, ensuring high recall success.</p>
                     </div>
 
                     <div class="p-8 bg-white rounded-2xl shadow-xl feature-card border-t-4 border-accent">
-                        <i data-lucide="robot" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
-                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Invoice & Reporting Automation</h3>
-                        <p class="text-gray-600">Automate recurring administrative tasks: generating invoices, processing payments, syncing data between accounting tools, and compiling weekly performance reports. Save 10+ hours per week.</p>
+                        <i data-lucide="shield-check" class="w-10 h-10 text-accent mb-4 p-2 bg-accent/10 rounded-lg"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-primary-navy">Insurance & Claims Flow</h3>
+                        <p class="text-gray-600">Automate the tedious paperwork: generating digital insurance claims, tracking outstanding payments, and syncing billing information between your practice management software and accounting tools.</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        ---
 
         <section id="crm-core" class="py-24 bg-mid-bg text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <p class="text-accent text-lg font-semibold uppercase tracking-widest mb-3">
-                            The Foundation of Growth
+                            Patient Journey at the Core
                         </p>
                         <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">
-                            Deep CRM Integration: More Than Just a Database
+                            Dental CRM: The Central Hub for Patient Health
                         </h2>
                         <p class="text-gray-300 text-lg mb-8">
-                            We believe successful automation starts with a rock-solid **Customer Relationship Management (CRM) system**. Neura Work doesn't just bolt AI onto your existing processes—we refine your entire customer journey and build the automation directly into your CRM platform.
+                            A general CRM won't cut it. Neura Work customizes platforms like HubSpot or Pipedrive to function as a **Dental Patient Management System**, capturing clinical history, consent forms, and treatment progression, all integrated with your communication tools.
                         </p>
                         
                         <div class="space-y-4">
                             <div class="flex items-start">
                                 <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
-                                <p class="text-gray-200"><strong class="text-white">Workflow Mapping:</strong> Detailed auditing of your existing sales and support cycles before any code is written.</p>
+                                <p class="text-gray-200"><strong class="text-white">Unified Patient Profile:</strong> One dashboard for every patient interaction, from their first inquiry to post-op follow-up.</p>
                             </div>
                             <div class="flex items-start">
                                 <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
-                                <p class="text-gray-200"><strong class="text-white">Custom Objects & Fields:</strong> Tailoring the CRM structure to perfectly mirror your unique business model, not a generic template.</p>
+                                <p class="text-gray-200"><strong class="text-white">Treatment Plan Tracking:</strong> Automated alerts when a patient is due for the next phase of a multi-stage treatment (e.g., implants, orthodontics).</p>
                             </div>
                             <div class="flex items-start">
                                 <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1 mr-3"></i>
-                                <p class="text-gray-200"><strong class="text-white">AI-Driven Scoring:</strong> Implementing lead scoring and client health metrics powered by predictive AI within the CRM dashboard.</p>
+                                <p class="text-gray-200"><strong class="text-white">HIPAA/GDPR Compliance Focus:</strong> Ensuring all data automation adheres strictly to required medical privacy standards.</p>
                             </div>
                         </div>
                         
-                        <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="mt-10 inline-block px-8 py-3 bg-accent text-primary-navy font-bold rounded-full hover:bg-cyan-500 transition duration-300">
-                            Start My CRM Audit
+                        <a href="mailto:neuraworks11@gmail.com" class="mt-10 inline-block px-8 py-3 bg-accent text-primary-navy font-bold rounded-full hover:bg-cyan-500 transition duration-300">
+                            Start Your Clinic Automation Audit
                         </a>
                     </div>
                     
                     <div class="relative p-6 bg-primary-navy rounded-xl shadow-2xl border border-gray-700 hidden lg:block">
-                        <h3 class="text-xl font-bold mb-4 text-accent">Neura Work Automation Dashboard</h3>
+                        <h3 class="text-xl font-bold mb-4 text-accent">AI Patient Flow Dashboard</h3>
                         <div class="bg-gray-800 p-4 rounded-lg space-y-3">
                             <div class="flex justify-between items-center text-gray-300">
-                                <span class="font-medium">Total Automated Tasks (Last 30 Days)</span>
-                                <span class="text-3xl font-extrabold text-white">14,352</span>
+                                <span class="font-medium">Total Automated Communication (Last 30 Days)</span>
+                                <span class="text-3xl font-extrabold text-white">7,890</span>
                             </div>
                             <div class="h-2 bg-gray-700 rounded-full">
-                                <div class="h-2 bg-accent rounded-full" style="width: 85%;"></div>
+                                <div class="h-2 bg-accent rounded-full" style="width: 92%;"></div>
                             </div>
                             <div class="grid grid-cols-3 gap-4 pt-4">
                                 <div class="bg-gray-900 p-3 rounded-lg text-center">
-                                    <p class="text-2xl font-bold text-green-400">98%</p>
-                                    <p class="text-xs text-gray-400">Chatbot Resolution Rate</p>
+                                    <p class="text-2xl font-bold text-red-400">32% ↓</p>
+                                    <p class="text-xs text-gray-400">No-Show Rate Reduction</p>
                                 </div>
                                 <div class="bg-gray-900 p-3 rounded-lg text-center">
-                                    <p class="text-2xl font-bold text-purple-400">3.5X</p>
-                                    <p class="text-xs text-gray-400">Lead Qualification Speed</p>
+                                    <p class="text-2xl font-bold text-purple-400">88%</p>
+                                    <p class="text-xs text-gray-400">Automated Recall Success</p>
                                 </div>
                                 <div class="bg-gray-900 p-3 rounded-lg text-center">
-                                    <p class="text-2xl font-bold text-yellow-400">$2.1K</p>
-                                    <p class="text-xs text-gray-400">Estimated Cost Saved</p>
+                                    <p class="text-2xl font-bold text-yellow-400">12hrs</p>
+                                    <p class="text-xs text-gray-400">Staff Time Freed/Week</p>
                                 </div>
                             </div>
                         </div>
@@ -255,13 +304,11 @@
             </div>
         </section>
 
-        ---
-
         <section id="process" class="py-24 bg-light-bg">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-primary-navy">Our 4-Step Automation Blueprint</h2>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-primary-navy">Our 4-Step Patient Flow Blueprint</h2>
                 <p class="text-xl text-center text-gray-600 max-w-4xl mx-auto mb-16">
-                    A tested framework to ensure every solution is perfectly tailored, robust, and delivers a measurable ROI.
+                    A tested framework designed to integrate seamlessly with existing dental PMS systems.
                 </p>
 
                 <div class="max-w-4xl mx-auto relative pl-10">
@@ -272,10 +319,10 @@
                         <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll">
                             <span class="text-accent font-extrabold text-3xl block mb-2">01</span>
                             <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
-                                <i data-lucide="search" class="w-6 h-6 mr-3 text-accent"></i>
-                                Discovery & Process Mapping
+                                <i data-lucide="stethoscope" class="w-6 h-6 mr-3 text-accent"></i>
+                                Audit Patient Journey & PMS
                             </h3>
-                            <p class="text-lg text-gray-600">We embed with your team to meticulously map every workflow, identify friction points, and pinpoint the highest-leverage opportunities for AI intervention. This ensures our work targets your most critical bottlenecks.</p>
+                            <p class="text-lg text-gray-600">We map the existing patient journey, from initial contact to 6-month recall, and analyze your current Practice Management Software (PMS) integration points to identify automation gaps.</p>
                         </div>
                     </div>
 
@@ -284,225 +331,5 @@
                         <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll" style="animation-delay: 0.2s;">
                             <span class="text-accent font-extrabold text-3xl block mb-2">02</span>
                             <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
-                                <i data-lucide="code-square" class="w-6 h-6 mr-3 text-accent"></i>
-                                Architecture & Development
-                            </h3>
-                            <p class="text-lg text-gray-600">We design, build, and test your custom automation stack, integrating AI tools and connecting them seamlessly to your core CRM and existing tech stack. We prioritize security and scalability.</p>
-                        </div>
-                    </div>
-
-                    <div class="relative pb-16">
-                        <div class="absolute left-9 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 1.0s;"></div>
-                        <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll" style="animation-delay: 0.4s;">
-                            <span class="text-accent font-extrabold text-3xl block mb-2">03</span>
-                            <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
-                                <i data-lucide="zap" class="w-6 h-6 mr-3 text-accent"></i>
-                                Deployment & Team Training
-                            </h3>
-                            <p class="text-lg text-gray-600">We deploy the solution in phases, monitor for flawless operation, and provide rigorous training for your staff to ensure high adoption rates. Automation is only effective when people use it correctly.</p>
-                        </div>
-                    </div>
-
-                    <div class="relative pb-0">
-                        <div class="absolute left-9 top-0 w-6 h-6 bg-accent rounded-full border-4 border-light-bg process-dot" style="animation-delay: 1.5s;"></div>
-                        <div class="ml-16 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accent/50 animate-on-scroll" style="animation-delay: 0.6s;">
-                            <span class="text-accent font-extrabold text-3xl block mb-2">04</span>
-                            <h3 class="text-2xl font-bold text-primary-navy mb-3 flex items-center">
-                                <i data-lucide="trending-up" class="w-6 h-6 mr-3 text-accent"></i>
-                                Optimization & Scaling
-                            </h3>
-                            <p class="text-lg text-gray-600">Post-launch, we continuously monitor performance dashboards, gather user feedback, and refine the AI logic to maximize efficiency and prepare the successful workflows for scaling across your entire organization.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        ---
-
-        <section id="results" class="py-24 bg-primary-navy text-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-white">Measurable, Guaranteed Outcomes</h2>
-                <p class="text-xl text-center text-gray-400 max-w-4xl mx-auto mb-16">
-                    Our clients typically see a 30% reduction in overhead and a 50% increase in lead-to-opportunity conversion within the first 90 days.
-                </p>
-
-                <div class="flex flex-col lg:flex-row gap-12 items-center">
-                    
-                    <div class="lg:w-1/3 space-y-8">
-                        <div class="bg-mid-bg p-6 rounded-xl shadow-xl border-l-4 border-accent animate-on-scroll">
-                            <p class="text-accent text-sm font-semibold mb-2">KEY PERFORMANCE INDICATOR</p>
-                            <h3 class="text-4xl font-extrabold text-white">50% <span class="text-2xl text-green-400">↑</span></h3>
-                            <p class="text-gray-300">Increase in Marketing Qualified Leads (MQLs)</p>
-                        </div>
-                        <div class="bg-mid-bg p-6 rounded-xl shadow-xl border-l-4 border-accent animate-on-scroll" style="animation-delay: 0.3s;">
-                            <p class="text-accent text-sm font-semibold mb-2">KEY PERFORMANCE INDICATOR</p>
-                            <h3 class="text-4xl font-extrabold text-white">30hrs <span class="text-2xl text-red-400">↓</span></h3>
-                            <p class="text-gray-300">Average Time Saved per Team Member/Month</p>
-                        </div>
-                        <div class="bg-mid-bg p-6 rounded-xl shadow-xl border-l-4 border-accent animate-on-scroll" style="animation-delay: 0.6s;">
-                            <p class="text-accent text-sm font-semibold mb-2">KEY PERFORMANCE INDICATOR</p>
-                            <h3 class="text-4xl font-extrabold text-white">99.8%</h3>
-                            <p class="text-gray-300">Data Synchronization Accuracy (CRM Core)</p>
-                        </div>
-                    </div>
-
-                    <div class="lg:w-2/3 bg-mid-bg p-8 rounded-xl shadow-2xl animate-on-scroll" style="animation-delay: 0.9s;">
-                        <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
-                            <h3 class="text-2xl font-bold text-white">Revenue Impact Tracker</h3>
-                            <span class="text-accent font-medium">Q3 2024</span>
-                        </div>
-                        
-                        <svg viewBox="0 0 100 50" class="w-full h-auto" preserveAspectRatio="none">
-                            <defs>
-                                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:rgb(34, 211, 238);stop-opacity:0.8" />
-                                    <stop offset="100%" style="stop-color:rgb(6, 182, 212);stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            
-                            <text x="5" y="49" fill="#9CA3AF" font-size="2">Jan</text>
-                            <text x="25" y="49" fill="#9CA3AF" font-size="2">Feb</text>
-                            <text x="45" y="49" fill="#9CA3AF" font-size="2">Mar</text>
-                            <text x="65" y="49" fill="#9CA3AF" font-size="2">Apr</text>
-                            <text x="85" y="49" fill="#9CA3AF" font-size="2">May</text>
-                            
-                            <line x1="0" y1="5" x2="100" y2="5" stroke="#374151" stroke-width="0.1"/>
-                            <line x1="0" y1="25" x2="100" y2="25" stroke="#374151" stroke-width="0.1"/>
-                            <line x1="0" y1="45" x2="100" y2="45" stroke="#374151" stroke-width="0.1"/>
-                            
-                            <polyline
-                                points="5,40 25,35 45,20 65,10 85,5"
-                                fill="none"
-                                stroke="url(#lineGradient)"
-                                stroke-width="1.5"
-                                class="animated-polyline"
-                                stroke-linecap="round"
-                            />
-                            
-                            <circle cx="85" cy="5" r="1.5" fill="#22D3EE" class="opacity-0" style="animation: slide-in-bottom 0.1s forwards 3.5s;"/>
-                            <text x="75" y="3" fill="#22D3EE" font-size="3" font-weight="bold" class="opacity-0" style="animation: slide-in-bottom 0.1s forwards 3.5s;">+300% ROI</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        ---
-
-        <section class="py-20 bg-accent text-primary-navy">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">
-                    Ready to Stop Leaving Money on the Table?
-                </h2>
-                <p class="text-xl max-w-3xl mx-auto mb-10">
-                    Your competitors are automating. Schedule a free, 30-minute strategy session to see the exact automation blueprint we'd build for your business.
-                </p>
-                <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="px-12 py-4 bg-primary-navy text-accent text-xl font-bold rounded-full hover:bg-slate-700 transition duration-300 shadow-2xl">
-                    Claim Your Free Strategy Session
-                </a>
-            </div>
-        </section>
-
-        ---
-
-        <footer class="bg-primary-navy pt-16 pb-8">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-                
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/20 pb-10 mb-8">
-                    
-                    <div>
-                        <div class="text-3xl font-extrabold mb-3">
-                            <span class="text-white">Neura</span><span class="text-accent">Work</span>
-                        </div>
-                        <p class="text-gray-400 text-sm max-w-xs">
-                            Engineering the next generation of scalable business operations through AI and CRM power.
-                        </p>
-                        <div class="flex space-x-4 mt-6">
-                             <a href="#" class="text-gray-400 hover:text-accent transition duration-150"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                             <a href="#" class="text-gray-400 hover:text-accent transition duration-150"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                             <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="text-gray-400 hover:text-accent transition duration-150"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-accent">Solutions</h4>
-                        <ul class="space-y-3 text-gray-400">
-                            <li><a href="#solutions" class="hover:text-white transition duration-150">AI Automation</a></li>
-                            <li><a href="#crm-core" class="hover:text-white transition duration-150">CRM Integration</a></li>
-                            <li><a href="#process" class="hover:text-white transition duration-150">Scaling Workflows</a></li>
-                            <li><a href="#" class="hover:text-white transition duration-150">Custom Development</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-accent">Agency</h4>
-                        <ul class="space-y-3 text-gray-400">
-                            <li><a href="#" class="hover:text-white transition duration-150">Case Studies</a></li>
-                            <li><a href="#results" class="hover:text-white transition duration-150">Measurable Results</a></li>
-                            <li><a href="#" class="hover:text-white transition duration-150">Careers</a></li>
-                            <li><a href="#" class="hover:text-white transition duration-150">Privacy & Terms</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-accent">Contact</h4>
-                        <p class="text-gray-400 mb-3">Ready to begin your automation journey?</p>
-                        <a href="https://forms.gle/9vkBsQswLAn94sjd7" target="_blank" class="block w-full text-center py-3 bg-accent text-primary-navy font-bold rounded-lg hover:bg-cyan-500 transition duration-300">
-                            Get in Touch
-                        </a>
-                        <p class="text-xs text-gray-500 mt-4">Inquiries: <a href="mailto:contact@neurawork.io" class="hover:text-white">contact@neurawork.io</a></p>
-                    </div>
-
-                </div>
-                
-                <div class="text-center text-gray-500 text-sm">
-                    &copy; <span id="current-year"></span> Neura Work. All rights reserved.
-                </div>
-
-            </div>
-        </footer>
-
-    </main>
-    
-    <script>
-        // 1. Mobile Menu Toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            var menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // 2. Set Current Year in Footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // 3. Lucide Icon Refresh
-        window.onload = function() {
-            lucide.createIcons();
-            // Optional: Start scroll animation check on load
-            observeAnimations();
-        };
-
-        // 4. Simple Scroll-In Animation Logic
-        // This makes elements with class 'animate-on-scroll' fade in when they enter the viewport
-        function observeAnimations() {
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                        // Stop observing once it's visible (optional)
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            }, {
-                rootMargin: '0px',
-                threshold: 0.1 // Trigger when 10% of element is visible
-            });
-
-            document.querySelectorAll('.animate-on-scroll').forEach(element => {
-                observer.observe(element);
-            });
-        }
-    </script>
-
-</body>
-</html>
+                                <i data-lucide="workflow" class="w-6 h-6 mr-3 text-accent"></i>
+                                Architect & Build Aut
